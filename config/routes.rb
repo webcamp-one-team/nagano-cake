@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  
   namespace :admins do
     get '' => 'tops#top'
   end
@@ -22,7 +23,7 @@ Rails.application.routes.draw do
 
   #会員側のルーティング#
 
-  devise_for :users
+  devise_for :members
 
   get 'home/top' => 'home/top',as: 'member_top'
   get 'home/about' => 'home/about',as: 'member_about'
