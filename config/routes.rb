@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
 
+
   devise_for :admins
+
+
+  
 
   namespace :admins do
     get '' => 'tops#top'
@@ -20,6 +24,15 @@ Rails.application.routes.draw do
   namespace :admins do
     resources :members, only: [:index, :show, :edit, :update]
   end
+
+
+  #会員側のルーティング#
+
+  devise_for :members
+
+  get 'home/top' => 'home/top',as: 'member_top'
+  get 'home/about' => 'home/about',as: 'member_about'
+
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
