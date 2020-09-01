@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
-  
+
+  get 'items/index'
+  get 'items/show'
   namespace :admins do
     get '' => 'tops#top'
   end
@@ -30,5 +32,6 @@ Rails.application.routes.draw do
 
   	resources :addresses, only: [:index, :create, :edit, :update, :destroy]
 
+  	resources :items, only: [:index, :show]
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
