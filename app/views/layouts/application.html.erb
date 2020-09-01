@@ -24,11 +24,11 @@
     <div class="collapse navbar-collapse" id="navbarEexample1">
       <ul class="nav navbar-nav navbar-right">
         <% if member_signed_in? %>
-          <p class="navbar-text">ようこそ、<%= member.name %>！</p>
+          <p class="navbar-text">ようこそ、<%= current_member.last_name %>さん！</p>
           <li><%= link_to "マイページ" %></li>
           <li><%= link_to "商品一覧" %></li>
           <li><%= link_to "カート" %></li>
-          <li><%= link_to "ログアウト" %></li>
+          <li><%= link_to "ログアウト", destroy_member_session_path, method: :delete %></li>
         <% else %>
           <p class="navbar-text">ようこそ、ゲストさん！</p>
           <li><%= link_to "About", member_about_path %></li>
