@@ -1,2 +1,10 @@
-<h1>Admins::Items#show</h1>
-<p>Find me in app/views/admins/items/show.html.erb</p>
+<h2>商品詳細</h2>
+<h4>商品名</h4>
+<%= @item.name %>
+<h4>商品説明</h4>
+<%= @item.detail %>
+<h4>ジャンル</h4>
+<%= @item.genre.name %>
+<h4>価格</h4>
+<%= @item.price %>
+<%= link_to "編集する", edit_admins_item_path(@item) %></a>
