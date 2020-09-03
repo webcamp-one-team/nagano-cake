@@ -1,12 +1,24 @@
 Rails.application.routes.draw do
 
+#会員側のルーティング#
+  devise_for :members
 
+  namespace :members do
+
+    get 'home/top' => 'home/top',as: 'member_top'
+    get 'home/about' => 'home/about',as: 'member_about'
+
+    resources :addresses, only: [:index, :edit, :create, :update, :destroy]
+
+    resources :members, only: [:edit, :update, :show]
+
+    resources :items, only: [:index, :show]
+
+    resources :genres, only: [:show]
+
+  end
 
   devise_for :admins
-
-
-  
-
 
   namespace :admins do
     get '' => 'tops#top'
@@ -26,6 +38,7 @@ Rails.application.routes.draw do
   namespace :admins do
     resources :members, only: [:index, :show, :edit, :update]
   end
+
 
 
   #会員側のルーティング#
