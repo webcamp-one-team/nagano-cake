@@ -25,8 +25,10 @@
       <ul class="nav navbar-nav navbar-right">
         <% if member_signed_in? %>
           <p class="navbar-text">ようこそ、<%= current_member.last_name %>さん！</p>
+
           <li><%= link_to "マイページ", member_path(current_member) %></li>
           <li><%= link_to "商品一覧", items_path %></li>
+
           <li><%= link_to "カート" %></li>
           <li><%= link_to "ログアウト", destroy_member_session_path, method: :delete %></li>
         <% else %>
