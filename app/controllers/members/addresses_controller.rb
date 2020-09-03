@@ -1,13 +1,15 @@
 class Members::AddressesController < ApplicationController
+
+  before_action :set_member
+
   def index
     @address = Address.new
-    @member = current_member
-    @addresses = @member.address
+    @addresses = @member.addresses
   end
 
   def create
-    address = Address.new(address_params)
-    address.member_id = current_member
+    @address = Address.new(address_params)
+    @address.member_id = current_member.id
     address.save
     redirect_to member_addresses_path
   end
@@ -18,6 +20,9 @@ class Members::AddressesController < ApplicationController
   end
 
   def update
+    @address = Address.find(params[:id])
+    @address.update(address_params)
+    redirect_to member_addresses_path
   end
 
   def destroy
@@ -28,6 +33,10 @@ class Members::AddressesController < ApplicationController
   end
 
   private
+
+  def set_member
+    @member = current_member
+  end
   def address_params
     params.require(:address).permit(:poatal_code, :address, :name)
   end

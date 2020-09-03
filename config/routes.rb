@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
 
+
 #会員側のルーティング#
   devise_for :members
 
-  namespace :members do
+  scope module: :members do
 
     get 'home/top' => 'home/top',as: 'member_top'
     get 'home/about' => 'home/about',as: 'member_about'
@@ -15,6 +16,8 @@ Rails.application.routes.draw do
     resources :items, only: [:index, :show]
 
     resources :genres, only: [:show]
+
+    resources :carts, only: [:index, :create, :update, :destroy]
 
   end
 
