@@ -7,6 +7,9 @@ Rails.application.routes.draw do
 
     get 'home/top' => 'home/top',as: 'member_top'
     get 'home/about' => 'home/about',as: 'member_about'
+    get "members/my_page" => "members#show"
+    get "members/unsubscribe" => "members#unsubscribe"
+    get "members/withdraw" => "members#withdraw"
 
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
 
