@@ -1,0 +1,39 @@
+<div class="container">
+	<div class="row">
+		<div class="col-xs-3">
+			<!--ジャンル検索欄-->
+			<div>ジャンル検索</div>
+		</div>
+		<div class="col-xs-9">
+			<!--商品一覧-->
+			<h2>商品一覧</h2>
+			<table>
+				<% @items.each do |item| %>
+					<tr>
+						<td></td>
+						<td><%= item.name %></td>
+						<td><%= item.price %></td>
+
+						<span></span>
+
+						<td></td>
+						<td><%= item.name %></td>
+						<td><%= item.price %></td>
+
+						<span></span>
+
+						<td></td>
+						<td><%= item.name %></td>
+						<td><%= item.price %></td>
+
+						<span></span>
+
+						<td></td>
+						<td><%= item.name %></td>
+						<td><%= item.price %></td>
+					</tr>
+				<% end %>
+			</table>
+		</div>
+	</div>
+</div>
