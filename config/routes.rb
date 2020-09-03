@@ -31,10 +31,12 @@ Rails.application.routes.draw do
   #会員側のルーティング#
 
   devise_for :members
-
+  get "members/my_page" => "members#show"
+  get "members/unsubscribe" => "members#unsubscribe"
+  get "members/withdraw" => "members#withdraw"
   get 'home/top' => 'home/top',as: 'member_top'
   get 'home/about' => 'home/about',as: 'member_about'
-
+    resources :members, only:[:edit, :update]
 
   	resources :addresses, only: [:index, :create, :edit, :update, :destroy]
 
