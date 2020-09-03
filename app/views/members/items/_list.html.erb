@@ -1,0 +1,13 @@
+<div class="col-xs-4 product-box space">
+	<%= link_to members_item_path(item.id) do  %>
+		<div class="row">
+			<h4><%= item.name %><h4>
+		</div>
+		<div class="row">
+			
+		</div>
+	<% end %>
+	<div class="row">
+		<h4><%= price_include_tax(item.price) %></h4>
+	</div>
+</h4>
