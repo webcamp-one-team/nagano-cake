@@ -12,6 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2020_09_02_134513) do
 
+
   create_table "addresses", force: :cascade do |t|
     t.integer "member_id"
     t.string "postal_code"
