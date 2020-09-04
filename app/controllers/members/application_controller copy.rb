@@ -1,9 +1,10 @@
-class ApplicationController < ActionController::Base
+class Members::ApplicationController < ActionController::Base
+  layout 'members'
 before_action :configure_permitted_parameters, if: :devise_controller?
 
 
   def after_sign_in_path_for(resource)
-      members_member_top_path
+      member_top_path
   end
 
 
