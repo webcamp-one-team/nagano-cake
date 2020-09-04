@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   devise_for :admins
 
 
-  
+
 
   namespace :admins do
     get '' => 'tops#top'
@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     resources :orders, only: [:index, :show, :update]
   end
   namespace :admins do
-    resources :order_items, only: [:update]
+    resources :order_items, only: [:update, :index, :show]
   end
   namespace :admins do
     resources :items, only: [:index, :show, :edit, :update, :create, :new]
