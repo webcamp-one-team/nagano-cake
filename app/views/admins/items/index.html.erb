@@ -20,9 +20,9 @@
 					<td><%= item.genre.name if item.genre.present? %></td>
 					<td>
 						<% if item.is_active == true %>
-							<th>有効</th>
+							<th>販売中</th>
 						<% else %>
-							<th>無効</th>
+							<th>売り切れ</th>
 						<% end %>
 				    </td>
 				</tr>
