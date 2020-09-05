@@ -5,4 +5,5 @@ class Member < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :carts
+  
 end

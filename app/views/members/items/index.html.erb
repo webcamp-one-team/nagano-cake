@@ -1,6 +1,21 @@
-<h2>商品一覧</h2>(全×件)
-<% @items.each do |item| %>
-<%= attachment_image_tag item, :img, format: 'jpeg', fallback: "no_image.jpg", size: "100x100" %>
-<h6>商品名</h6><%= item.name %>
-<h6>値段</h6><%= item.price %>
-<% end %>
+<div class="container">
+	<div class="row">
+		<div class="col-xs-3">
+			<!--ジャンル検索欄-->
+			<div>ジャンル検索</div>
+			<% @genres.each do |genre| %>
+					<%= link_to genre.name, genre_path(genre.id)  %>
+			<% end %>
+		</div>
+		<div class="col-xs-9">
+			<!--商品一覧-->
+			<h2>商品一覧</h2>
+			<table>
+				<% @items.each do |item| %>
+        <%= attachment_image_tag item, :img, format: 'jpeg', fallback: "no_image.jpg", size: "100x100" %>
+					<%= render 'list', item: item %>
+				<% end %>
+			</table>
+		</div>
+	</div>
+</div>

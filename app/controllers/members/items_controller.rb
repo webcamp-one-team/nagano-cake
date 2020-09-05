@@ -1,4 +1,5 @@
 class Members::ItemsController < ApplicationController
+
   def index
   	@items = Item.all
   end
@@ -8,6 +9,7 @@ class Members::ItemsController < ApplicationController
   	@cart = @item.carts.build
   end
 
+  
   private
   def item_params
   	params.require(:item).permit(:name, :detail, :img, :price, :genre_id, :is_active)
