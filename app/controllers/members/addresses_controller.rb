@@ -1,4 +1,4 @@
-class Members::AddressesController < Members::ApplicationController
+class Members::AddressesController < Members::Base
 
   before_action :set_member
 

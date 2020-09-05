@@ -1,4 +1,4 @@
-class Admins::MembersController < Admins::ApplicationController
+class Admins::MembersController < Admins::Base
   def update
   end
 

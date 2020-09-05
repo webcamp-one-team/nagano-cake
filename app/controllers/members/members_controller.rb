@@ -1,4 +1,4 @@
-class MembersController < Members::ApplicationController
+class Members::MembersController < Members::Base
 
   def show
   	@member = current_member #params[:id]だと今回はurlにidを載せないようにしているのでcurrent_memberにしてログイン者のidを取得しています。オカタク。

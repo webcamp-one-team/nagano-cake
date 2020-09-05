@@ -1,4 +1,4 @@
-class Admins::GenresController < Admins::ApplicationController
+class Admins::GenresController < Admins::Base
 
   def index
   	@genre = Genre.new

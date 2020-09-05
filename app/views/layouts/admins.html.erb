@@ -1,16 +1,20 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>TestApli</title>
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+<head>
+  <title>namespace - admin</title>
+  <%= csrf_meta_tags %>
+  <%= stylesheet_link_tag    'admins', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
 
-  <body>
-  <h1>これはAdminsのlayoutsです</h1>
-    <%= yield %>
-  </body>
+<body>
+  <% content_for :content do %>
+  <%= render 'layouts/admins/header' %>
+  <%= yield %>
+  <%= render 'layouts/admins/footer' %>
+  <% end %>
+  <%= render template: "layouts/application" %>
+</body>
+
 </html>

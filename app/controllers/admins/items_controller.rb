@@ -1,4 +1,4 @@
-class Admins::ItemsController < Admins::ApplicationController
+class Admins::ItemsController < Admins::Base
   before_action :set_genres, only: [:index, :new, :edit, :create, :update]
 
   def index

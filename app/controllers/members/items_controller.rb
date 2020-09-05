@@ -1,4 +1,4 @@
-class Members::ItemsController < Members::ApplicationController
+class Members::ItemsController < Members::Base
 	
 
   def index

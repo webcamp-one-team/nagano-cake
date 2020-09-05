@@ -1,4 +1,4 @@
-class Members::HomeController < Members::ApplicationController
+class Members::HomeController < Members::Base
 	
   def top
   	@genres = Genre.all
