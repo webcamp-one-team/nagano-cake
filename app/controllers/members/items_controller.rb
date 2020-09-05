@@ -1,5 +1,5 @@
-class Members::ItemsController < ApplicationController
-
+class Members::ItemsController < Members::Base
+	
   def index
   	@items = Item.all
   end

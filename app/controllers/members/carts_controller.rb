@@ -1,4 +1,4 @@
-class Members::CartsController < ApplicationController
+class Members::CartsController < Members::Base
 
   def index
     @carts = Cart.all
