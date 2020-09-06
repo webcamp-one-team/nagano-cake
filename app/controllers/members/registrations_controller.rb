@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Members::SessionsController < Devise::SessionsController
+class Members::RegistrationsController < Devise::RegistrationsController
   layout 'members'
   before_action :configure_permitted_parameters, if: :devise_controller?
   
