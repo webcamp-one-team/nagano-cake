@@ -10,11 +10,9 @@
 		<div class="col-xs-9">
 			<!--商品一覧-->
 			<h2>商品一覧</h2>
-			<table>
 				<% @items.each do |item| %>
 					<%= render 'list', item: item %>
 				<% end %>
-			</table>
 		</div>
 	</div>
 </div>

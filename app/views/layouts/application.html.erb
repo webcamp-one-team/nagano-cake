@@ -29,7 +29,7 @@
           <li><%= link_to "マイページ", member_path(current_member) %></li>
           <li><%= link_to "商品一覧", items_path %></li>
 
-          <li><%= link_to "カート" %></li>
+          <li><%= link_to "カート", carts_path(@cart) %></li>
           <li><%= link_to "ログアウト", destroy_member_session_path, method: :delete %></li>
         <% else %>
           <p class="navbar-text">ようこそ、ゲストさん！</p>
