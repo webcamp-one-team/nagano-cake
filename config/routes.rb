@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
 
 
+
 #会員側のルーティング#
+
   scope module: :members do
     get 'home/top' => 'home#top'
     get 'home/about' => 'home#about'
@@ -15,14 +17,16 @@ Rails.application.routes.draw do
     resources :items, only: [:index, :show]
     resources :genres, only: [:show]
 
-    resources :orders, only: [:index, :new, :create]
+    resources :orders, only: [:index, :new, :create, :show]
       post 'order/confirm' => 'orders#confirm', as: 'order_confirm'
-      get "order/thanks"
+      get "order/thanks" => 'orders#thanks', as: 'order_thanks'
+
       
     devise_for :members
 
+
   end
- 
+
 
 
   #管理者側のルーティング

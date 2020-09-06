@@ -10,6 +10,8 @@ class Member < ApplicationRecord
   has_many :addresses
   has_many :carts
   has_many :orders
+  has_many :cart_items
+  has_many :items, through: :cart_items
 
 
 end
