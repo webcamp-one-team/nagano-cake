@@ -52,6 +52,7 @@ class Members::OrdersController < ApplicationController
   end
 
 
+
   def confirm
     @order = Order.new(orders_params)
     @carts = current_member.carts
