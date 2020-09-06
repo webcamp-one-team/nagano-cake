@@ -1,24 +1,27 @@
 Rails.application.routes.draw do
 
 #会員側のルーティング#
-  devise_for :members
-
-  namespace :members do
+  scope module: :members do
 
     get 'home/top' => 'home/top',as: 'member_top'
     get 'home/about' => 'home/about',as: 'member_about'
+    get "members/my_page" => "members#show"
+    get "members/unsubscribe" => "members#unsubscribe", as: "member_unsubscribe"
+    patch "members/withdraw" => "members#withdraw", as: "member_withdraw"
+    resource :addresses, only: [:index, :edit, :create, :update, :destroy]
 
-    resources :addresses, only: [:index, :edit, :create, :update, :destroy]
-
-    resources :members, only: [:edit, :update, :show]
+    resource :member, only: [:edit, :update, :show]
 
     resources :items, only: [:index, :show]
 
     resources :genres, only: [:show]
-
   end
+devise_for :members
+#↑devise_for :membersは当初2行目上に置いてあったが下に置かれることになった。
+#理由としては上から順に読み込まれていった結果「resource :member, only: [:edit, :update, :show]」を読み
+#「edit_member_path」に遷移するはずが
+#「 edit_member_registration_path」を読み込みdevise側で用意している個人情報編集画面に行くエラーが発生したので下に設置した。オカタク
 
-  devise_for :admins
 
   namespace :admins do
     get '' => 'tops#top'
@@ -38,24 +41,6 @@ Rails.application.routes.draw do
   namespace :admins do
     resources :members, only: [:index, :show, :edit, :update]
   end
+devise_for :admins
 
-
-
-  #会員側のルーティング#
-
-  devise_for :members
-  get "members/my_page" => "members#show"
-  get "members/unsubscribe" => "members#unsubscribe"
-  get "members/withdraw" => "members#withdraw"
-  get 'home/top' => 'home/top',as: 'member_top'
-  get 'home/about' => 'home/about',as: 'member_about'
-    resources :members, only:[:edit, :update]
-
-  	resources :addresses, only: [:index, :create, :edit, :update, :destroy]
-
-  	resources :items, only: [:index, :show]
-
-
-
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
