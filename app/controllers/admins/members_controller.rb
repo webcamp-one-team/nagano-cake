@@ -1,13 +1,16 @@
 class Admins::MembersController < Admins::Base
-  def update
+
+  def index
+    @members = Member.all
+  end
+
+  def show
   end
 
   def edit
   end
 
-  def index
+  def update
   end
 
-  def show
-  end
 end
