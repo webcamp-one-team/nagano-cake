@@ -1,2 +1,33 @@
-<h1>Members::Items#show</h1>
-<p>Find me in app/views/members/items/show.html.erb</p>
+<!--商品詳細-->
+<div class="container">
+	<div class="row">
+		<div class="col-xs-3">
+			<!--ジャンル検索欄-->
+			<div>ジャンル検索</div>
+			<% @genres.each do |genre| %>
+					<%= link_to genre.name, genre_path(genre.id)  %>
+			<% end %>
+		</div>
+		<div class="col-xs-9">
+			<div class="item-image">
+        <%= attachment_image_tag @item, :img, format: 'jpeg', fallback: "no_image.jpg", size: "100x100" %>
+			</div>
+			<div class="item-name">
+				<%= @item.name %>
+			</div>
+			<div class="item-detail">
+				<%= @item.detail %>
+			</div>
+			<div class="item-price-with-tax">
+
+				<%= @item.price %>(<%= price_include_tax(@item.price) %>)
+			</div>
+			<%= form_with(model: [@item, @cart], local:true, url:{controller:'members/carts', action: 'create'}) do |f| %>
+			    <%= f.label :ご購入個数 %>
+			    <%= f.number_field :amount, value: 1 ,min:1, max:99 %>個
+			    <%= f.hidden_field :item_id, value: @item.id  %>
+			    <%= f.submit "カートに入れる", class: "btn btn-danger" %>
+			 <% end %>
+		</div>
+	</div>
+</div>

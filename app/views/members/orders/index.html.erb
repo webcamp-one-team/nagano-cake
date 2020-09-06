@@ -1,0 +1,32 @@
+<div class="container">
+	<div class="row">
+		<div class="col-xs-1"></div>
+		<div class="col-xs-7">
+			<h4>注文情報確認</h4>
+				<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>商品名</th>
+							<th>単価（税込）</th>
+							<th>数量</th>
+							<th>小計</th>
+						</tr>
+					</thead>
+					<tbody>
+						<% sum_all = 0 %>
+						<% @orders.each do |order| %>
+						<tr>
+							<td><%= order.item.name %></td>
+							<td><%= price_include_tax(order.item.price) %></td>
+							<td><%= order.amount %></td>
+							<td><%= sum_item = price_include_tax(cart.item.price).to_i * order.amount  %>
+								<% sum_all += sum_item %>
+							</td>
+						</tr>
+						<% end %>
+					</tbody>
+				</table>
+		</div>
+		<div class="col-xs-1"></div>
+	</div>
+</div>
