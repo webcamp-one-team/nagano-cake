@@ -59,6 +59,7 @@ class Members::OrdersController < ApplicationController
     @order.payment_method = params[:order][:payment_method]
     @add = params[:order][:add].to_i
     case @add
+
     when 1
       @order.postal_code = @member.postal_code
       @order.address = @member.address
