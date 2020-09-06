@@ -1,6 +1,5 @@
-class Members::GenresController < ApplicationController
 
-
+class Members::GenresController < Members::Base
 
   def show
   	@genre = Genre.find(params[:id])
