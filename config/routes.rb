@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
 
  #会員側のルーティング#
- 
+
   scope module: :members do
     devise_for :members
 
@@ -19,12 +19,11 @@ Rails.application.routes.draw do
     resources :carts, only: [:index, :create, :update, :destroy]
     resources :items, only: [:index, :show]
     resources :genres, only: [:show]
-    resources :orders, only: [:index, :new, :create]
+    resources :orders, only: [:index, :new, :create, :show]
       post 'order/confirm' => 'orders#confirm', as: 'order_confirm'
-      get "order/thanks"
-      
+      get "order/thanks" => 'orders#thanks', as: 'order_thanks'
   end
- 
+
 
   #管理者側のルーティング
    #scope module: :admins do
