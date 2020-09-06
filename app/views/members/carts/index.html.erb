@@ -1,38 +1,57 @@
-<h2>ショッピングカート</h2>
-<h2>商品一覧</h2>
-<div class="row">
-	<div class="col-xs-10">
-		<table class="table table-hover table-inverse">
-			<thead>
-				<tr>
-					<th>商品</th>
-					<th>単価(税込)</th>
-					<th>数量</th>
-					<th>小計</th>
-				</tr>
-			</thead>
-			<tbody>
-				<% sum_all = 0 %>
-				<% @carts.each do |cart| %>
-				<tr>
-					<td><%= cart.item.name %></td>
-					<td><%= tax(cart.item.price) %></td>
-					<td>
-						<%= form_with model: cart, local: true do |f| %>
-		    			<%= f.number_field :amount, value: cart.amount, min:1, max:99  %>
-		    			<%= f.submit "変更", class: "btn btn-primary" %>
+
+<!--カート一覧-->
+<div class="container">
+	<div class="row">
+		<div calss="col-xs-1"></div>
+		<div class="col-xs-10">
+			<h4>ショッピングカート</h4>
+
+			<div claa="all-delete">
+			</div>
+
+			<table class="table table-striped">
+					<thead>
+						<tr>
+							<th>商品名</th>
+							<th>単価（税込）</th>
+							<th>数量</th>
+							<th>小計</th>
+							<th></th>
+						</tr>
+					</thead>
+					<tbody>
+						<% sum_all = 0 %><!--sum_all=0 が抜けていると計算に不具合が出てきた-->
+						<% @carts.each do |cart| %>
+						<tr>
+							<td><%= cart.item.name %></td>
+							<td><%= price_include_tax(cart.item.price) %></td>
+
+
+							<%= form_with model: cart, local: true do |f| %>
+							<td>
+								<%= f.number_field :amount, value: cart.amount, min:1, max:99 %>個
+
+								<%= f.submit "変更", class:"btn btn-default" %>
+							</td>
+							<% end %>
+							<td>
+								<%= sum_item = price_include_tax(cart.item.price).to_i * cart.amount %>
+								<% sum_all += sum_item %>
+							</td>
+							<td></td>
+						</tr>
 						<% end %>
-					</td>
-					<td>
-						<%= sum_item = tax(cart.item.price).to_i * cart.amount %>円
-						<!-- ↓用途要確認 -->
-						<% sum_all += sum_item %>
-				    </td>
-				</tr>
-				<% end %>
-			</tbody>
-		</table>
+					</tbody>
+				</table>
+				<!--合計＆注文の有無-->
+				<%= link_to "買い物を続ける",items_path, class:"btn btn-default" %>
+				<div class="total-price">
+					合計金額：<%= sum_all %>円
+				</div>
+				<div class="to-order">
+					<%= link_to "情報入力に進む", new_order_path, class:"btn btn-default" %>
+				</div>
+		</div>
+		<div class="col-xs-1"></div>
 	</div>
 </div>
-
-合計金額：<%= sum_all %>円

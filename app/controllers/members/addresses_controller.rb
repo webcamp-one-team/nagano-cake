@@ -10,8 +10,8 @@ class Members::AddressesController < Members::Base
   def create
     @address = Address.new(address_params)
     @address.member_id = current_member.id
-    address.save
-    redirect_to member_addresses_path
+    @address.save
+    redirect_to addresses_path
   end
 
   def edit
@@ -22,7 +22,7 @@ class Members::AddressesController < Members::Base
   def update
     @address = Address.find(params[:id])
     @address.update(address_params)
-    redirect_to member_addresses_path
+    redirect_to addresses_path
   end
 
   def destroy
@@ -38,7 +38,7 @@ class Members::AddressesController < Members::Base
     @member = current_member
   end
   def address_params
-    params.require(:address).permit(:poatal_code, :address, :name)
+    params.require(:address).permit(:postal_code, :address, :name)
   end
 
 end
