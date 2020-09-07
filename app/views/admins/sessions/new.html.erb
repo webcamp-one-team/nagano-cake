@@ -1,46 +1,85 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12">
-
       <h2>管理者ログイン</h2>
-
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="field">
         <%= f.label :email, "メールアドレス" %>
         <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
       </div>
-
       <div class="field">
         <%= f.label :password, "パスワード" %>
         <%= f.password_field :password, autocomplete: "current-password" %>
       </div>
-
       <div class="actions">
         <%= f.submit "ログイン", class: "btn btn-primary" %>
       </div>
       <% end %>
       <%= link_to "会員の方はこちら", new_member_session_path, class: "btn btn-lg" %>
-      <div class="initial_admins">
-        <h1>初期登録Admins</h1>
-        <table>
-          <tr>
-            <th>メールアドレス</th>
-            <th>パスワード</th>
-          </tr>
-          <tr>
-            <td>j@j</td>
-            <td>jjjjjj</td>
-          </tr>
-          <tr>
-            <td>k@k</td>
-            <td>kkkkkk</td>
-          </tr>
-          <tr>
-            <td>j@j</td>
-            <td>kkkkkk</td>
-          </tr>
-        </table>
-      </div>
     </div>
+  </div>
+  <div class="initial_admins">
+    <h1>初期登録Admins</h1>
+    <table>
+      <tr>
+        <th>メールアドレス</th>
+        <th>パスワード</th>
+      </tr>
+      <tr>
+        <td>j@j</td>
+        <td>jjjjjj</td>
+      </tr>
+      <tr>
+        <td>k@k</td>
+        <td>kkkkkk</td>
+      </tr>
+      <tr>
+        <td>j@j</td>
+        <td>kkkkkk</td>
+      </tr>
+    </table>
+  </div>
+  <div class="initial_admins">
+    <h1>初期登録Genres</h1>
+    <table>
+      <tr>
+        <th>ケーキ</th>
+      </tr>
+      <tr>
+        <th>チョコレート</th>
+      </tr>
+      <tr>
+        <th>焼き菓子（無効）</th>
+      </tr>
+      <tr>
+        <th>和菓子</th>
+      </tr>
+      <tr>
+        <th>アイス</th>
+      </tr>
+      <tr>
+        <th>クレープ</th>
+      </tr>
+    </table>
+  </div>
+  <div class="initial_admins">
+    <h1>初期登録Items</h1>
+    <table>
+      <tr>
+        <th>ショートケーキ</th>
+      </tr>
+      <tr>
+        <th>チョコクランチ（おいしい）</th>
+      </tr>
+      <tr>
+        <th>チョコっとおいしいパン（無効）</th>
+      </tr>
+      <tr>
+        <th>焼き菓子のようななにか</th>
+      </tr>
+      <tr>
+        <th>焼いたお菓子（無効）</th>
+      </tr>
+    </table>
   </div>
 </div>
