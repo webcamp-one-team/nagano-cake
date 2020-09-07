@@ -9,10 +9,10 @@ Rails.application.routes.draw do
     get 'home/about' => 'home#about'
     get 'members/my_page' => 'members#show'
     get 'members/unsubscribe' => 'members#unsubscribe'
-    get 'members/withdraw' => 'members#withdraw'
+    patch 'members/withdraw' => 'members#withdraw'
 
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
-    resources :members, only: [:edit, :update, :show]
+    resource :members, only: [:edit, :update, :show]
     resources :carts, only: [:index, :create, :update, :destroy]
     resources :items, only: [:index, :show]
     resources :genres, only: [:show]
@@ -20,10 +20,7 @@ Rails.application.routes.draw do
     resources :orders, only: [:index, :new, :create, :show]
       post 'order/confirm' => 'orders#confirm', as: 'order_confirm'
       get "order/thanks" => 'orders#thanks', as: 'order_thanks'
-
-      
     devise_for :members
-
 
   end
 
