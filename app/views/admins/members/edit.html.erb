@@ -1,2 +1,43 @@
-<h1>Admins::Members#edit</h1>
-<p>Find me in app/views/admins/members/edit.html.erb</p>
+<%= "#{@member.last_name} #{@member.first_name}さんの会員情報編集" %>
+<%= form_with model: @member, url: admins_member_path, local: true do |f| %>
+<table>
+  <tr>
+    <td><%= "会員ID" %></td>
+    <td><%= @member.id %></td>
+  </tr>
+  <tr>
+    <td><%= "氏名" %></td>
+    <td><%= f.text_field :last_name, class:"form-control" %></td>　　 　
+    <td><%= f.text_field :first_name, class:"form-control" %></td>
+  </tr>
+  <tr>
+    <td><%= "フリガナ" %></td>
+    <td><%= f.text_field :last_name_kana, class:"form-control" %></td>　　 　
+    <td><%= f.text_field :first_name_kana, class:"form-control" %></td>
+  </tr>
+  <tr>
+    <td><%= "郵便番号(ハイフンなし)" %></td>
+    <td><%= f.text_field :postal_code, class:"form-control" %></td>
+  </tr>
+  <tr>
+    <td><%= "住所" %></td>
+    <td><%= f.text_field :address, class:"form-control" %></td>
+  </tr>
+  <tr>
+    <td><%= "電話番号(ハイフンなし)" %></td>
+    <td><%= f.text_field :telephone_number, class:"form-control" %></td>
+  </tr>
+  <tr>
+    <td><%= "メールアドレス" %></td>
+    <td><%= f.text_field :email, class:"form-control" %></td>
+  </tr>
+  <tr>
+    <td><%= "会員ステータス" %></td>
+    <td><%= f.radio_button :is_deleted, :false %><%= f.label :is_deleted_false, "有効" %><%= f.radio_button :is_deleted, :true %><%= f.label :is_deleted_true, "退会済" %></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td><%= f.submit "変更を保存する", class: "btn btn-primary" %></td>
+  </tr>
+</table>
+<% end %>
