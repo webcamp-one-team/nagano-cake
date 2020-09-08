@@ -21,7 +21,6 @@ Rails.application.routes.draw do
       post 'order/confirm' => 'orders#confirm', as: 'order_confirm'
       get "order/thanks" => 'orders#thanks', as: 'order_thanks'
 
-      
     devise_for :members
 
 
@@ -41,7 +40,6 @@ Rails.application.routes.draw do
     resources :members, only: [:index, :show, :edit, :update]
   end
 
-  
   scope module: :admins do #URLがadmins_admins_sign_inのように冗長にならないようにscope muduleを使用
     devise_for :admins
   end

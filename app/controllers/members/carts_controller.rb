@@ -3,7 +3,7 @@ class Members::CartsController < Members::Base
    before_action :authenticate_member!
    before_action :set_member
   # # before_action :set_cart
-  
+
   def create
     @cart = current_member.carts.build(cart_params)
     @current_item = Cart.find_by(item_id: @cart.item_id,member_id: @cart.member_id)
@@ -37,7 +37,7 @@ class Members::CartsController < Members::Base
   # # 		@cart.destroy
   # # 		redirect_to carts_path
   # # end
-  
+
   def destroy_all
   end
 
@@ -56,13 +56,3 @@ class Members::CartsController < Members::Base
   # 	@cart = Cart.find(params[:id])
   # end
 end
-
-  
- 
-
-  
-
- 
- 
-
-  
