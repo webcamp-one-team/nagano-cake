@@ -3,6 +3,9 @@ class Member < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+  def active_for_authentication?
+    super && (self.is_deleted == false)
+  end
 
   has_many :addresses
   has_many :carts
@@ -12,3 +15,4 @@ class Member < ApplicationRecord
 
 
 end
+

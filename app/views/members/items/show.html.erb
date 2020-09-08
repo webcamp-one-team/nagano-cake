@@ -10,7 +10,7 @@
 		</div>
 		<div class="col-xs-9">
 			<div class="item-image">
-
+        <%= attachment_image_tag @item, :img, format: 'jpeg', fallback: "no_image.jpg", size: "100x100" %>
 			</div>
 			<div class="item-name">
 				<%= @item.name %>
@@ -19,7 +19,8 @@
 				<%= @item.detail %>
 			</div>
 			<div class="item-price-with-tax">
-				<%= @item.price %>
+
+				<%= @item.price %>(<%= price_include_tax(@item.price) %>)
 			</div>
 			<%= form_with(model: [@item, @cart], local:true, url:{controller:'members/carts', action: 'create'}) do |f| %>
 			    <%= f.label :ご購入個数 %>

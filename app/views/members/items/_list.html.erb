@@ -1,6 +1,7 @@
 
 	<%= link_to item_path(item.id) do  %>
 		<div class="row">
+			<%= attachment_image_tag item, :img, format: 'jpeg', fallback: "no_image.jpg", size: "100x100" %>
 			<h4><%= item.name %><h4>
 		</div>
 	<% end %>

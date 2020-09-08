@@ -1,16 +1,16 @@
-class Members::ItemsController < ApplicationController
 
-	before_action :set_genre
+class Members::ItemsController < Members::Base
+  before_action :set_genre
 
   def index
   	@items = Item.all
-
   end
 
   def show
   	@item = Item.find(params[:id])
   	@cart = @item.carts.build
   end
+
 
   private
   def item_params

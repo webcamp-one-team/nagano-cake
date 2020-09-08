@@ -1,20 +1,30 @@
-class Members::CartsController < ApplicationController
+
+class Members::CartsController < Members::Base
    before_action :authenticate_member!
    before_action :set_member
   # # before_action :set_cart
 
-
-   def create
-   	@cart = Cart.new(cart_params)
-   	@item = Cart.find_by(item_id: @cart.item_id, member_id: @cart.member_id)
-   	@cart.member_id = current_member.id
-   	@cart.save
-   	redirect_to carts_path
-   end
-
-   def index
+  def create
+    @cart = current_member.carts.build(cart_params)
+    @current_item = Cart.find_by(item_id: @cart.item_id,member_id: @cart.member_id)
+    if @current_item.nil?
+      if @cart.save
+        flash[:success] = 'カートに商品が追加されました！'
+        redirect_to carts_path
+      else
+        @carts = @member.carts.all
+        render 'index'
+        flash[:danger] = 'カートに商品を追加できませんでした。'
+      end
+    else
+      @current_item.amount += params[:amount].to_i
+      @current_item.update(cart_params)
+      redirect_to carts_path
+    end
+  end
+ def index
   	@carts = @member.carts.all
-   end
+ end
 
    def update
    	@cart = Cart.find(params[:id])
@@ -27,6 +37,9 @@ class Members::CartsController < ApplicationController
   # # 		@cart.destroy
   # # 		redirect_to carts_path
   # # end
+  
+  def destroy_all
+  end
 
 
   private
@@ -43,3 +56,13 @@ class Members::CartsController < ApplicationController
   # 	@cart = Cart.find(params[:id])
   # end
 end
+
+  
+ 
+
+  
+
+ 
+ 
+
+  

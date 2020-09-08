@@ -1,4 +1,5 @@
-class Members::HomeController < ApplicationController
+
+class Members::HomeController < Members::Base
 	before_action :set_genres
 
   def top
