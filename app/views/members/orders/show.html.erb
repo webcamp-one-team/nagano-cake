@@ -32,8 +32,8 @@
 					<td><%= order_item.item.name %></td>
 					<td><%= price_include_tax(order_item.item.price) %></td>
 					<td><%= order_item.amount %></td>
-					<td><%= sub_total = price_include_tax(order_item.item.price).to_i * order_item.amount %>
-						<% sum_all += sub_total.to_i %>
+					<td><%= sum_item = price_include_tax(order_item.item.price).to_i * order_item.amount %>
+						<% sum_all += sum_item.to_i %>
 					</td>
 				</tr>
 				<% end %>

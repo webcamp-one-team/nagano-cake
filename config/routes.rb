@@ -21,10 +21,9 @@ Rails.application.routes.draw do
     resources :items, only: [:index, :show]
     resources :genres, only: [:show]
 
-    resources :orders, only: [:index, :new, :create, :show]
+    resources :orders, only: [:index, :new, :create, :show, :update]
     post 'order/confirm' => 'orders#confirm', as: 'order_confirm'
     get "order/thanks" => 'orders#thanks', as: 'order_thanks'
-    
     devise_for :members
 
   end

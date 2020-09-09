@@ -88,6 +88,11 @@ class Members::OrdersController < Members::Base
     @order = Order.find(params[:id])
   end
 
+  def update
+    @order = Order.find(params[:id])
+    @order.update(orders_params)
+  end
+
   private
 
   def orders_params
