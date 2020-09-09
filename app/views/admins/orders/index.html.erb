@@ -11,12 +11,12 @@
         </tr>
       </thead>
       <tbody>
-        <% @order_items.each do |order| %>
+        <% @all_order.each do |order| %>
         <tr>
-          <td><%=link_to "#{l order.created_at}", admins_order_path(order.id) %></td>
-          <td><%= order.order.name %></td>
-          <td><%= order.amount %></td>
-          <td><%= order.making_status %></td>
+          <td><%= link_to "#{l order.created_at}", admins_order_path(order.id) %></td>
+          <td><%= "#{order.member.last_name} #{order.member.first_name}" %></td>
+          <td><%= order.order_items.sum(:amount) %></td>
+          <td><%= order.order_status %></td>
         </tr>
         <% end %>
       </tbody>

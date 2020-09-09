@@ -34,7 +34,9 @@ Rails.application.routes.draw do
     resources :order_items, only: [:update]
     resources :items, only: [:index, :show, :edit, :update, :create, :new]
     resources :genres, only: [:index, :edit, :update, :create]
-    resources :members, only: [:index, :show, :edit, :update]
+    resources :members, only: [:index, :show, :edit, :update] do
+    get "orders/confirm"
+    end
   end
 
   scope module: :admins do #URLがadmins_admins_sign_inのように冗長にならないようにscope muduleを使用

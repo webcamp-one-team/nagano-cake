@@ -1,12 +1,15 @@
 class Admins::OrdersController < Admins::Base
   def index
-    @orders = Order.all
-    @order_items = OrderItem.all
+    @all_order = Order.all
   end
 
   def show
     @order = Order.find(params[:id])
     @order_item = OrderItem.find(params[:id])
+  end
+
+  def confirm
+    @member_order = Member.find(params[:member_id])
   end
 
   def update
