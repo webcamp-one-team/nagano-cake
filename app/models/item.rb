@@ -4,5 +4,6 @@ class Item < ApplicationRecord
 	has_many :members, through: :carts
 	has_many :order_items
 	has_many :order, through: :order_items
+
 	attachment :img
 end

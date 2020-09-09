@@ -22,23 +22,26 @@ class Members::CartsController < Members::Base
       redirect_to carts_path
     end
   end
- def index
-  	@carts = @member.carts.all
- end
 
-   def update
+  def index
+  	@carts = @member.carts.all
+  end
+
+  def update
    	@cart = Cart.find(params[:id])
    	@cart.update(cart_params)
    	redirect_to carts_path
-   end
+  end
 
-  # # def destoroy
-  # # 		@cart = Cart.find(params[:id])
-  # # 		@cart.destroy
-  # # 		redirect_to carts_path
-  # # end
-  
+  def destroy
+    @cart = Cart.find(params[:id])
+		@cart.destroy
+    redirect_to carts_path
+  end
+
   def destroy_all
+    @member.carts.destroy_all
+    redirect_to carts_path
   end
 
 
@@ -52,17 +55,4 @@ class Members::CartsController < Members::Base
    	@member = current_member
   end
 
-  # def set_cart
-  # 	@cart = Cart.find(params[:id])
-  # end
 end
-
-  
- 
-
-  
-
- 
- 
-
-  

@@ -1,4 +1,4 @@
-class Members::OrdersController < ApplicationController
+class Members::OrdersController < Members::Base
 
   before_action :set_member
   def new
@@ -47,7 +47,7 @@ class Members::OrdersController < ApplicationController
        end
          render :thanks
      else
-       redirect_to member_top_path
+       redirect_to home_top_path
      end
   end
 

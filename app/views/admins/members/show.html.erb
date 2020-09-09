@@ -1,2 +1,47 @@
-<h1>Admins::Members#show</h1>
-<p>Find me in app/views/admins/members/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-1"></div>
+    <div class="col-xs-10">
+      <%= "#{@member.last_name} #{@member.first_name}さんの会員詳細" %>
+
+      <table class="table table-bordered">
+        <tr>
+          <td><%= "顧客ID" %></td>
+          <% if @member.is_deleted == false%>
+          <td><%= "#{@member.id}　　ーー有効会員ーー" %></td>
+          <% else %>
+          <td><%= "#{@member.id}　　ーー無効会員ーー" %></td>
+          <% end %>
+        </tr>
+        <tr>
+          <td><%= "氏名" %></td>
+          <td><%= "#{@member.last_name}　#{@member.first_name}" %></td>
+        </tr>
+        <tr>
+          <td><%= "フリカナ" %></td>
+          <td><%= "#{@member.last_name_kana}　#{@member.first_name_kana}" %></td>
+        </tr>
+        <tr>
+          <td><%= "郵便番号" %></td>
+          <td><%= @member.postal_code %></td>
+        </tr>
+        <tr>
+          <td><%= "住所" %></td>
+          <td><%= @member.address %></td>
+        </tr>
+        <tr>
+          <td><%= "電話番号" %></td>
+          <td><%= @member.telephone_number %></td>
+        </tr>
+        <tr>
+          <td><%= "メールアドレス" %></td>
+          <td><%= @member.email %></td>
+        </tr>
+      </table>
+
+      <%= link_to "編集する", edit_admins_member_path(@member.id), class: "btn btn-primary" %>
+      <%= link_to "注文履歴一覧を見る", edit_admins_member_path, class: "btn btn-primary" %>
+    </div>
+    <div class="col-xs-1"></div>
+  </div>
+</div>
