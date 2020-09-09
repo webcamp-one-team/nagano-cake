@@ -3,8 +3,8 @@
 class Members::SessionsController < Devise::SessionsController
   layout 'members'
   before_action :configure_permitted_parameters, if: :devise_controller?
-  
-  
+   before_action :reject_user, only: [:create]
+   
     def after_sign_in_path_for(resource)
         items_path
     end
@@ -29,15 +29,30 @@ class Members::SessionsController < Devise::SessionsController
 
  def reject_user
     @member = Member.find_by(email: params[:member][:email].downcase)
-    if @user
+    if @member
       if (@member.valid_password?(params[:member][:password]) && (@member.active_for_authentication? == false))
         flash[:error] = "退会済みです。"
-        redirect_to new_user_session_path
+        redirect_to new_member_session_path
       end
     else
       flash[:error] = "必須項目を入力してください。"
     end
   end
+
+  #このアクションはログインが正常にできた場合は走らない。
+  #30行目はuse.rbで定義したメソッドを使っていく。
+  #31行目はMemberモデルのemailカラムを利用して@memberに入るmembersテーブルの1レコードすべてを取得している。.downcaseは大文字を小文字に変えるメソッド。
+  #今回のpasswordは人によっては大文字を記入する人もいるのでその大文字を小文字に変えることを目的にしている。メンター曰くよく使われるメソッドとのこと。
+  #32行目は@memberに値があるかどうかを見ている。なければelse「flash[:error] = "必須項目を入力してください。"」が走る。
+  #33行目の左辺はdebise側が用意しているvalid_passwordメソッドを使用。@memberのpasswordカラムの値とsessionsコントローラーのログイン画面で入力してPOSThttpメソッドで送られてきたpasswordの値を比較している。
+  #両者の値が合致すればtrueを合致しなければfalseを返す。今回のvalid_password?メソッドはsessionsコントローラーのログイン画面で入力した値に暗号化をしてくれる。
+  #passwordカラムはエンジニア側からでも暗号化された状態で管理される。ユーザー以外は知ることが出来ないように暗号化されてコマンドプロンプトなどにも表示される。valid_passwordメソッドを使用しないと
+  #@memberの値はsessionsコントローラーに打ち込まれた値と絶対に合致することがないのでvalid_passwordメソッドを使用。
+  # (@member.active_for_authentication? == false)はuser.rbに書いてあるメモを参照。書いてあることは@memberのis_deletedカラムの値がtrueかfalseか判断。
+  #33行目の左辺と右辺が&&によって比較されている。(@member.valid_password?(params[:member][:password])がtrueで(@member.active_for_authentication? == false)がtrueなら
+  #34行目が表示される。32行目の@memberに値がない、33行目で両辺どちらかがfalseなら38行目が表示される。
+  #オカタクメモ
+
   # GET /resource/sign_in
   # def new
   #   super

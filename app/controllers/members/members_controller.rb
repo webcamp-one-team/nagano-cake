@@ -3,27 +3,27 @@ class Members::MembersController < Members::Base
 
   def show
 
-  	@member = current_member #params[:id]だと今回はurlにidを載せないようにしているのでcurrent_memberにしてログイン者のidを取得しています。オカタク。
+    @member = current_member #params[:id]だと今回はurlにidを載せないようにしているのでcurrent_memberにしてログイン者のidを取得しています。オカタク。
   end
 
   def edit
 
-  	@member = current_member
+    @member = current_member
   end
   def update
-  	@member = current_member
-  	@member.update(member_params)
-    redirect_to member_top_path
+    @member = current_member
+    @member.update(member_params)
+    redirect_to home_top_path
   end
   def unsubscribe
     @member = current_member
   end
 
   def withdraw
-  	@member = current_member
+    @member = current_member
     @member.update(is_deleted: true)
     reset_session
-    redirect_to member_top_path
+    redirect_to home_top_path
   end
 
   private
@@ -32,4 +32,5 @@ class Members::MembersController < Members::Base
 
   end
 end
+
 
