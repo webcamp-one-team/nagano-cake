@@ -1,8 +1,12 @@
 <h2>注文履歴詳細</h2>
-<h6>購入者</h6><%= @order_item.order.name %>
-<h6>配送先</h6><%= @order_item.order.address %>
-<h6>支払方法</h6><%= @order_item.order.payment_method %>
+<h6>購入者</h6><%= @order.name %>
+<h6>配送先</h6><%= @order.address %>
+<h6>支払方法</h6><%= @order.payment_method %>
 <h6>注文ステータス</h6>
+<%= form_with(model: @order, url:{action: 'update'}, local: true) do |form| %>
+    <%= form.select :order_status, Order.order_statuses.keys %><%= form.submit '更新' %>
+<% end %>
+
 <div class="row">
 	<div class="col-xs-8">
 		<table class="table table-hover table-inverse">
@@ -13,19 +17,26 @@
 					<th>数量</th>
 					<th>小計</th>
 					<th>製作ステータス</th>
+					<th></th>
 				</tr>
 			</thead>
 			<tbody>
-				<% @order.order_items.each do |order_item| %>
+				<% sum_all = 0 %>
+				<% @order.order_items.each do |order| %>
 				<tr>
-					<% sum_all = 0 %>
-					<td><%= order_item.item.name %></td>
-					<td><%= price_include_tax(order_item.item.price) %></td>
-					<td><%= order_item.amount %></td>
-					<td><%= sum_item = price_include_tax(order_item.item.price).to_i * order_item.amount %>
-						<% sum_all += sum_item %>
+					<td><%= order.item.name %></td>
+					<td><%= price_include_tax(order.item.price) %></td>
+					<td><%= order.amount %></td>
+					<td>
+						<%= sub_total = price_include_tax(order.item.price).to_i * order.amount %>
+						<% sum_all += sub_total.to_i %>
 					</td>
-					<td></td>
+					<%= form_with model: order, url: admins_order_item_path(order), method: :patch, local: true do |f| %>
+					<td>
+						<%= f.select :making_status, OrderItem.making_statuses.keys.map {|k| [k, k]} %>
+						<%= f.submit '更新' %></td>
+					</td>
+					<% end %>
 				</tr>
 				<% end %>
 			</tbody>
@@ -33,5 +44,8 @@
 	</div>
 </div>
 <h4>商品合計</h4>
+<%= sum_all %>
 <h4>送料</h4>
+<%= @order.deliver_charge %>
 <h4>請求金額合計</h4>
+<%= sum_all + @order.deliver_charge %>

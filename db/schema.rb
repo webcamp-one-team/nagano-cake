@@ -36,14 +36,14 @@ ActiveRecord::Schema.define(version: 2020_09_03_054725) do
   create_table "carts", force: :cascade do |t|
     t.integer "member_id"
     t.integer "item_id"
-    t.integer "amount"
+    t.integer "amount", default: 1
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "genres", force: :cascade do |t|
     t.string "name"
-    t.boolean "validity"
+    t.boolean "validity", default: true, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -54,7 +54,7 @@ ActiveRecord::Schema.define(version: 2020_09_03_054725) do
     t.string "img_id"
     t.text "detail"
     t.integer "price"
-    t.boolean "is_active"
+    t.boolean "is_active", default: true, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -92,12 +92,12 @@ ActiveRecord::Schema.define(version: 2020_09_03_054725) do
 
   create_table "orders", force: :cascade do |t|
     t.integer "member_id"
-    t.integer "payment_method"
+    t.integer "payment_method", default: 0
     t.integer "order_status"
     t.string "postal_code"
     t.string "address"
     t.string "name"
-    t.integer "deliver_charge"
+    t.integer "deliver_charge", default: 800
     t.integer "total_payment"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
