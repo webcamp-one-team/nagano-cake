@@ -1,9 +1,9 @@
 
 class Members::HomeController < Members::Base
 	before_action :set_genres
+  before_action :set_items
 
   def top
-    @items = Item.all
   end
 
   def about
@@ -12,6 +12,10 @@ class Members::HomeController < Members::Base
   private
   def set_genres
   	@genres = Genre.all
+  end
+
+  def set_items
+     @items = Item.all
   end
 
 end

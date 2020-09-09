@@ -4,10 +4,8 @@
   	<%= form_for @member, url:members_path(@member.id) do |f| %>
 	    <tr>
 	  	  <th><%= "名前" %></th>
-	    	  <th><%= "(姓)" %></th>
-	      	  <td><%= f.text_field :last_name, class:"form-control" %></td>
-　　　     	  <th><%= "(名)" %></th>
-　　　  　   	  <td><%= f.text_field :first_name, class:"form-control" %></td>
+	  	  	<th><%= "(姓)" %></th><td><%= f.text_field :last_name, class:"form-control" %></td>
+　　　     	<th><%= "(名)" %></th><td><%= f.text_field :first_name, class:"form-control" %></td>
 	    </tr>
 		  <tr>
 		    <th><%= "フリガナ" %></th>

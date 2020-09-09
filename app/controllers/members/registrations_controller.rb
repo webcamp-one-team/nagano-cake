@@ -3,15 +3,15 @@
 class Members::RegistrationsController < Devise::RegistrationsController
   layout 'members'
   before_action :configure_permitted_parameters, if: :devise_controller?
-  
+
     def after_sign_in_path_for(resource)
       home_top_path
     end
-  
+
     def after_sign_out_path_for(resource)
       new_member_session_path
     end
-    
+
 
     protected
 
@@ -24,7 +24,7 @@ class Members::RegistrationsController < Devise::RegistrationsController
   #オカタクメモ1：上記のcofigure(以下ストロングパラメーターが分かりやすいのでそう呼ぶ)以下の記載がないとunpermitted.parameters: :カラム名とコマンドプロンプトに表れていた。
   #実際にパラメータの受け渡しがされていなかったので、次のページでは受け取ったパラメータが表示されるはずが空白になっていた。ようこそ～さん！の～の部分のこと。
 
-  
+
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
 
