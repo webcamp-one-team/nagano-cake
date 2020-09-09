@@ -39,6 +39,7 @@ class Members::CartsController < Members::Base
     redirect_to carts_path
   end
 
+
   def destroy_all
     @member.carts.destroy_all
     redirect_to carts_path
@@ -54,5 +55,6 @@ class Members::CartsController < Members::Base
   def set_member
    	@member = current_member
   end
+
 
 end

@@ -21,10 +21,10 @@ Rails.application.routes.draw do
     resources :items, only: [:index, :show]
     resources :genres, only: [:show]
 
-
     resources :orders, only: [:index, :new, :create, :show]
-      post 'order/confirm' => 'orders#confirm', as: 'order_confirm'
-      get "order/thanks" => 'orders#thanks', as: 'order_thanks'
+    post 'order/confirm' => 'orders#confirm', as: 'order_confirm'
+    get "order/thanks" => 'orders#thanks', as: 'order_thanks'
+    
     devise_for :members
 
   end
@@ -34,7 +34,6 @@ Rails.application.routes.draw do
   #管理者側のルーティング
 
   namespace :admins do
-
     get '' => 'tops#top'
     resources :orders, only: [:index, :show, :update]
     resources :order_items, only: [:update]
@@ -43,7 +42,6 @@ Rails.application.routes.draw do
     resources :members, only: [:index, :show, :edit, :update]
   end
 
-  
   scope module: :admins do #URLがadmins_admins_sign_inのように冗長にならないようにscope muduleを使用
     devise_for :admins
   end

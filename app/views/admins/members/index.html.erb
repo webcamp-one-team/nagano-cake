@@ -13,13 +13,13 @@
       <tbody>
         <% @members.each do |member| %>
         <tr>
-          <th><%= member.id %></th>
-          <th><%= link_to "#{member.last_name} #{member.first_name}", admins_member_path(member.id)%></th>
-          <th><%= member.email %></th>
+          <td><%= member.id %></td>
+          <td><%= link_to "#{member.last_name} #{member.first_name}", admins_member_path(member.id)%></td>
+          <td><%= member.email %></td>
           <% if member.is_deleted == true %>
-          <th>退会済</th>
+          <td>退会済</td>
           <% else %>
-          <th>有効</th>
+          <td>有効</td>
           <% end %>
         </tr>
         <% end %>
