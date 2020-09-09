@@ -1,5 +1,5 @@
-class Members::OrdersController < ApplicationController
-
+class Members::OrdersController < Members::Base
+  
   before_action :set_member
   def new
   	@order = Order.new
