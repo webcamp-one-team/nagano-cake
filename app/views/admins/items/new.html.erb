@@ -1,23 +1,22 @@
-<h2>商品新規登録</h2>
+<h4><strong>商品新規登録</strong></h4>
 <%= form_for(@item, url: admins_items_path) do |f| %>
 	<div class="row">
-	    <div class="col-sm-12">
+	    <div class="col-sm-5">
+	    	<div align="center">
+	    	<%= attachment_image_tag @item, :img, class: "img-square", fallback: "no_image.jpg", size:"200x200" %>
+	    	<%= f.attachment_field :img, placeholder: "商品画像", class: "image-prev" %>
+	    	</div>
 	    </div>
-	</div>
-	<br>
-	<div class="row">
-	    <div class="col-sm-6">
+	    <div class="col-sm-7">
 	    	商品名
 	    	<%= f.text_field :name, class:"form-control", placeholder:"商品名" %>
-	    	商品画像
-	    	<%= f.attachment_field :img, placeholder: "商品画像" %>
 	    	商品説明
-	    	<%= f.text_field :detail, class:"form-control", placeholder:"商品説明" %>
+	    	<%= f.text_area :detail, class:"form-control", placeholder:"商品説明" %>
 	    	ジャンル
 	    	<%= f.collection_select :genre_id, @genres, :id, :name %>
 	    	<br>税抜価格
 	    	<%= f.text_field :price, class:"form-control", placeholder:"税抜価格" %>円
 	    </div>
 	  </div>
-	  <%= f.submit "新規登録" %>
+	  <div align="right"><%= f.submit "新規登録" %></div>
 <% end %>
