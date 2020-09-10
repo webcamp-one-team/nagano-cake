@@ -55,15 +55,25 @@
 	</div>
 	<div class="col-xs-4">
 		<div style="float:left;">
-		    <strong>商品合計</strong><br>
-		    <strong>送料</strong><br>
-		    <strong>請求金額合計</strong>
-		</div>
-		<div style="float:left;">
-			<%= sum_all %><br>
-			<%= @order.deliver_charge %><br>
-			<strong><%= sum_all + @order.deliver_charge %></strong>
+			<table class="order_info_table">
+			<tr>
+			    <th width="150">商品合計</th>
+			    <td width="200"><%= sum_all %>円</td>
+			</tr>
+			<tr>
+			    <th>送料</th>
+			    <td><%= @order.deliver_charge %>円</td>
+			</tr>
+			<tr>
+				<th>請求金額合計</th>
+			    <td><%= sum_all + @order.deliver_charge %>円</td>
+			</tr>
+			</table>
 		</div>
 		<div style="clear:both;"></div>
 	</div>
+</div>
+
+<div id="test">
+	テスト
 </div>
