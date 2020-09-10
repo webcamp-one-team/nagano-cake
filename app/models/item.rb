@@ -1,4 +1,7 @@
 class Item < ApplicationRecord
+
+	scope :is_active, -> { where(is_active: true)}
+
 	belongs_to :genre
 	has_many :carts
 	has_many :members, through: :carts
