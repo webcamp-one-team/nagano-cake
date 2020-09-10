@@ -1,7 +1,6 @@
 class Admins::TopsController < Admins::Base
   def top
-    @order_item = OrderItem.where("created_at >= ?", Date.today)
+    @today_order = Order.where(created_at: Date.today.all_day)
   end
-
 
 end
