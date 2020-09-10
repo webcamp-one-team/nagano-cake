@@ -2,29 +2,29 @@
 	<div class="row">
 		<div class="col-xs-1"></div>
 		<div class="col-xs-7">
-			<h4>注文履歴詳細</h4>
-			<p>注文情報</p>
-			<table class="table table-striped">
+			<h1><strong>注文履歴詳細</strong></h1>
+			<p><strong>注文情報</strong></p>
+			<table class="table table-borderd">
 				<tr>
-					<th>注文日</th><td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
+					<th class="info">注文日</th><td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
 				</tr>
 				<tr>
-					<th>配送先</th><td><%= @order.postal_code %><%= @order.address %><%= @order.name %></td>
+					<th class="info">配送先</th><td><%= @order.postal_code %><%= @order.address %><%= @order.name %></td>
 				</tr>
 				<tr>
-					<th>支払方法</th><td><%= @order.payment_method %></td>
+					<th class="info">支払方法</th><td><%= @order.payment_method %></td>
 				</tr>
 				<tr>
-					<th>ステータス</th><td></td>
+					<th class="info">ステータス</th><td><%= @order.order_status %></td>
 				</tr>
 			</table>
-			<P>注文内容</P>
-			<table class="table table-striped">
+			<P><strong>注文内容</strong></P>
+			<table class="table table-borderd">
 				<tr>
-					<th>商品</th>
-					<th>単価（税込）</th>
-					<th>個数</th>
-					<th>小計</th>
+					<th class="info">商品</th>
+					<th class="info">単価（税込）</th>
+					<th class="info">個数</th>
+					<th class="info">小計</th>
 				</tr>
 				<% sum_all = 0 %>
 				<% @order.order_items.each do |order_item| %>
@@ -32,24 +32,25 @@
 					<td><%= order_item.item.name %></td>
 					<td><%= price_include_tax(order_item.item.price) %></td>
 					<td><%= order_item.amount %></td>
-					<td><%= sub_total = price_include_tax(order_item.item.price).to_i * order_item.amount %>
-						<% sum_all += sub_total.to_i %>
+					<td><%= sum_item = price_include_tax(order_item.item.price).to_i * order_item.amount %>
+						<% sum_all += sum_item.to_i %>
 					</td>
 				</tr>
 				<% end %>
 			</table>
 		</div>
 		<div class="col-xs-3">
-			<p>請求情報</p>
-			<table class="table table-striped">
+			<h1>　　　</h1>
+			<p><strong>請求情報</strong></p>
+			<table class="table table-borderd">
 				<tr>
-					<th>商品合計</th><td><%= sum_all %></td>
+					<th class="success">商品合計</th><td><%= sum_all %></td>
 				</tr>
 			    <tr>
-					<th>配送料</th><td><%= @order.deliver_charge %></td>
+					<th class="success">配送料</th><td><%= @order.deliver_charge %></td>
 				</tr>
 				<tr>
-					<th>ご請求額</th><td><%= total_payment = sum_all + @order.deliver_charge %></td>
+					<th class="success">ご請求額</th><td><%= total_payment = sum_all + @order.deliver_charge %></td>
 				</tr>
 			</table>
 		</div>

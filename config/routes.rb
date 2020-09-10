@@ -13,10 +13,15 @@ Rails.application.routes.draw do
 
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
     resource :members, only: [:edit, :update, :show]
-    resources :carts, only: [:index, :create, :update, :destroy]
+    resources :carts, only: [:index, :create, :update, :destroy] do
+      collection do
+        delete 'destroy_all'
+      end
+    end
     resources :items, only: [:index, :show]
     resources :genres, only: [:show]
-    resources :orders, only: [:index, :new, :create, :show]
+
+    resources :orders, only: [:index, :new, :create, :show, :update]
     post 'order/confirm' => 'orders#confirm', as: 'order_confirm'
     get "order/thanks" => 'orders#thanks', as: 'order_thanks'
 

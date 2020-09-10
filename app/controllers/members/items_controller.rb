@@ -1,7 +1,7 @@
 
 class Members::ItemsController < Members::Base
   before_action :set_genre
-	
+
   def index
   	@items = Item.all
   end
@@ -22,6 +22,3 @@ class Members::ItemsController < Members::Base
   end
 
 end
-
-  
-  
