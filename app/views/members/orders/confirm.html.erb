@@ -23,7 +23,7 @@
 							<td><%= price_include_tax(cart.item.price) %></td>
 							<td><%= cart.amount %></td>
 							<td><%= sum_item = price_include_tax(cart.item.price).to_i * cart.amount  %>
-								<% sum_all += sum_item %>
+								<% sum_all += sum_item.to_i %>
 							</td>
 						</tr>
 						<% end %>
@@ -47,6 +47,7 @@
 					<th>商品合計</th><td><%= sum_all %></td>
 				</tr>
 				<tr>
+					<th>請求額</th><td><%= total_payment = sum_all + @order.deliver_charge %></td>
 			<!-- 瀬尾：請求額コードがありましたが、エラーが発生していましたので、作業を進めるため一旦削除しています。コンフリクトが起きた際はダーオカさんのコードを優先させてください。 -->
 				</tr>
 			</table>

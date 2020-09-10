@@ -2,7 +2,10 @@
 <h6>購入者</h6><%= @order_item.order.name %>
 <h6>配送先</h6><%= @order_item.order.address %>
 <h6>支払方法</h6><%= @order_item.order.payment_method %>
-<h6>注文ステータス</h6>
+<%= form_with(model:@order, local:true) do |f| %>
+<h6>注文ステータス</h6><%= f.select :order_status, Order.order_statuses.keys, {prompt: '選択してください'}, class:" btn btn-info" %>
+					<%= f.submit "更新" %>
+<% end %>
 <div class="row">
 	<div class="col-xs-8">
 		<table class="table table-hover table-inverse">
@@ -16,14 +19,14 @@
 				</tr>
 			</thead>
 			<tbody>
+				<% sum_all = 0 %>
 				<% @order.order_items.each do |order_item| %>
 				<tr>
-					<% sum_all = 0 %>
 					<td><%= order_item.item.name %></td>
 					<td><%= price_include_tax(order_item.item.price) %></td>
 					<td><%= order_item.amount %></td>
 					<td><%= sum_item = price_include_tax(order_item.item.price).to_i * order_item.amount %>
-						<% sum_all += sum_item %>
+						<% sum_all += sum_item.to_i %>
 					</td>
 					<td></td>
 				</tr>
@@ -32,6 +35,6 @@
 		</table>
 	</div>
 </div>
-<h4>商品合計</h4>
-<h4>送料</h4>
-<h4>請求金額合計</h4>
+<h4>商品合計</h4><%= sum_all %>
+<h4>送料</h4><%= @order.deliver_charge %>
+<h4>請求金額合計</h4><%= total_payment = sum_all + @order.deliver_charge %>
