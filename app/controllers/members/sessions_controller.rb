@@ -6,7 +6,6 @@ class Members::SessionsController < Devise::SessionsController
 
    before_action :reject_user, only: [:create]
 
-
     def after_sign_in_path_for(resource)
         items_path
     end
