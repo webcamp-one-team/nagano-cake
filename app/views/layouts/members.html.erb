@@ -4,22 +4,19 @@
 <head>
   <title>namespace - members</title>
   <%= csrf_meta_tags %>
+  <script src="https://kit.fontawesome.com/13939d080b.js" crossorigin="anonymous"></script>
+
   <%= stylesheet_link_tag    'members', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 </head>
 
 <body>
-  <header>
      <% content_for :content do %>
       <%= render 'layouts/members/header' %>
-  </header><!-- /header -->s
-
-    <%= yield %>
-    <footer>
-    <%= render 'layouts/members/footer' %>
-  <% end %>
-    </footer>
-  <%= render template: "layouts/application" %>
+      <%= yield %>
+      <%= render 'layouts/members/footer' %>
+    <% end %>
+    <%= render template: "layouts/application" %>
 </body>
 
 </html>

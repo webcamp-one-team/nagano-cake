@@ -11,11 +11,11 @@ class Members::HomeController < Members::Base
 
   private
   def set_genres
-  	@genres = Genre.all
+  	@genres = Genre.where(validity: true)
   end
 
   def set_items
-     @items = Item.all
+     @all_ranks = Item.find(Like.group(:item_id).order('count(item_id) desc').pluck(:item_id))
   end
 
 end

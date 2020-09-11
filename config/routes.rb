@@ -18,7 +18,9 @@ Rails.application.routes.draw do
         delete 'destroy_all'
       end
     end
-    resources :items, only: [:index, :show]
+    resources :items, only: [:index, :show] do
+      resource :likes, only: [:create, :destroy]
+    end
     resources :genres, only: [:show]
 
     resources :orders, only: [:index, :new, :create, :show, :update]

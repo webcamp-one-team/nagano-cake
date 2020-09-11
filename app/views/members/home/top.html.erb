@@ -24,7 +24,7 @@
 			</div>
 			<div class="recommend-item">
 				<h4>オススメ商品</h4>
-				<% @items.each do |item| %>
+				<% @all_ranks.each do |item| %>
 					<%= render 'members/items/list', item: item %>
 				<% end %>
 			</div>
