@@ -4,6 +4,7 @@ class Members::HomeController < Members::Base
   before_action :set_items
 
   def top
+    @all_ranks = Item.find(OrderItem.group(:item_id).order('count(item_id) desc').limit(3).pluck(:item_id))
   end
 
   def about
@@ -15,7 +16,7 @@ class Members::HomeController < Members::Base
   end
 
   def set_items
-     @all_ranks = Item.find(Like.group(:item_id).order('count(item_id) desc').pluck(:item_id))
+     @all_rankings = Item.find(Like.group(:item_id).order('count(item_id) desc').pluck(:item_id))
   end
 
 end

@@ -13,6 +13,22 @@
 				</tr>
 				<% end %>
 			</table>
+			<table class="table table-bordered">
+				<tr>
+					<th colspan="2"><strong>人気ランキング</strong></th>
+				</tr>
+				<% @all_ranks.each.with_index(1) do |item, i|%>
+                <tr>
+					<th>No.<%= i %></th>
+					<td>
+						<%= link_to item_path(item.id) do  %>
+							<%= attachment_image_tag item, :img, format: 'jpeg', fallback: "no_image.jpg", size: "30x30" %>
+							<p><%= item.name %><p>
+						<% end %>
+					</td>
+				</tr>
+				<% end %>
+			</table>
 		</div>
 		<div class="col-xs-9">
 			<!--メインページ-->
@@ -24,7 +40,7 @@
 			</div>
 			<div class="recommend-item">
 				<h4>オススメ商品</h4>
-				<% @all_ranks.each do |item| %>
+				<% @all_rankings.each do |item| %>
 					<%= render 'members/items/list', item: item %>
 				<% end %>
 			</div>

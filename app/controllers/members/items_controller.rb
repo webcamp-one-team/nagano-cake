@@ -3,13 +3,15 @@ class Members::ItemsController < Members::Base
   before_action :set_genres
 
   def index
-  	@items = Item.includes(:genre).where(genres:
-      {validity: true}).is_active
+  	@items = Item.includes(:genre).where(genres:{validity: true}).is_active
+    @all_ranks = Item.find(OrderItem.group(:item_id).order('count(item_id) desc').limit(3).pluck(:item_id))
   end
 
   def show
   	@item = Item.find(params[:id])
   	@cart = @item.carts.build
+    @all_ranks = Item.find(OrderItem.group(:item_id).order('count(item_id) desc').limit(3).pluck(:item_id))
+
   end
 
 
