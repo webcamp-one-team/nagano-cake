@@ -9,14 +9,16 @@
 </head>
 
 <body>
+  <header>
+     <% content_for :content do %>
+      <%= render 'layouts/members/header' %>
+  </header><!-- /header -->s
 
-  <% content_for :content do %>
-  <%= render 'layouts/members/header' %>
-  <div class="container">
     <%= yield %>
-  </div>
-  <%= render 'layouts/members/footer' %>
+    <footer>
+    <%= render 'layouts/members/footer' %>
   <% end %>
+    </footer>
   <%= render template: "layouts/application" %>
 </body>
 

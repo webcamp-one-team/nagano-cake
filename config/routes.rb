@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 #会員側のルーティング#
 
   scope module: :members do
-    get 'home/top' => 'home#top'
+    get '/' => 'home#top', as: 'top_path'
     get 'home/about' => 'home#about'
     get 'members/my_page' => 'members#show'
     get 'members/unsubscribe' => 'members#unsubscribe'
