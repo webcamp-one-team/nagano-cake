@@ -3,7 +3,7 @@ class Members::ItemsController < Members::Base
   before_action :set_genres
 
   def index
-  	@items = Item.includes(:genre).where(genre:{validity: true}).is_active
+  	@items = Item.includes(:genre).where(genres:{validity: true}).is_active
   end
 
   def show
