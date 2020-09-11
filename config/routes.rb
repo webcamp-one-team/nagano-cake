@@ -10,7 +10,8 @@ Rails.application.routes.draw do
     get 'members/my_page' => 'members#show'
     get 'members/unsubscribe' => 'members#unsubscribe'
     patch 'members/withdraw' => 'members#withdraw'
-
+    get 'members/edit_pass' => 'members#edit_pass'
+    patch 'members/update_pass' => 'members#update_pass'
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
     resource :members, only: [:edit, :update, :show]
     resources :carts, only: [:index, :create, :update, :destroy] do
