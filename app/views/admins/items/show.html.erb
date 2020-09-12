@@ -1,17 +1,46 @@
-<h2>商品詳細</h2>
-<h4>商品名</h4>
-<%= @item.name %>
-<%= attachment_image_tag @item, :img, format: 'jpeg', fallback: "no_image.jpg", size: "100x100" %>
-<h4>商品説明</h4>
-<%= @item.detail %>
-<h4>ジャンル</h4>
-<%= @item.genre.name %>
-<h4>価格</h4>
-<%= @item.price %>(<%= tax(@item.price) %>)
-<h4>販売ステータス</h4>
-<% if @item.is_active == true %>
-	<th>販売中</th>
-<% else %>
-	<th>売り切れ</th>
-<% end %>
-<%= link_to "編集する", edit_admins_item_path(@item) %></a>
+<h4><strong>商品詳細</strong></h4>
+<br>
+<br>
+<br>
+<div class="row">
+    <div class="col-sm-5">
+    	<div align="center">
+    		<%= attachment_image_tag @item, :img, format: 'jpeg', fallback: "no_image.jpg", size: "200x200" %>
+    	</div>
+	</div>
+	<div class="col-sm-7">
+		<table class="table table-noborder">
+			<thead>
+				<th class="col-4"></th>
+				<th class="col-8"></th>
+			</thead>
+			<tbody>
+				<tr>
+					<td class="col-4"><strong>商品名</strong></td>
+					<td class="col-8"><%= @item.name %><br></td>
+				</tr>
+				<tr>
+					<td class="col-4"><strong>商品説明</strong></td>
+					<td class="col-8"><%= @item.detail %><br></td>
+				</tr>
+				<tr>
+					<td class="col-4"><strong>ジャンル</strong></td>
+					<td class="col-8"><%= @item.genre.name %></td>
+				</tr>
+				<tr>
+					<td class="col-4"><strong>価格</strong></td>
+					<td class="col-8"><%= @item.price %>(<%= tax(@item.price) %>)</td>
+				</tr>
+				<tr>
+					<td class="col-4"><strong>販売ステータス</strong></td>
+					<% if @item.is_active == true %>
+						<td class="col-8">販売中</td>
+					<% else %>
+						<td class="col-8">売り切れ</td>
+					<% end %>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</div>
+<div align="right"><button type="button" class="btn btn-secondary"><%= link_to "編集する", edit_admins_item_path(@item) %></button></div>

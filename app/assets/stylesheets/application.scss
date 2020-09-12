@@ -16,3 +16,12 @@
 
  @import "bootstrap-sprockets";
  @import "bootstrap";
+
+ .order_info_table {
+    border-collapse: collapse;
+    table-layout: fixed;
+}
+
+.test {
+	color: #ffffff;
+}

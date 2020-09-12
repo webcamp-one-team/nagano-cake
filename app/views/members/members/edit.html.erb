@@ -1,7 +1,6 @@
 <h1>登録情報編集</h1>
+<%= form_for @member, url:members_path(@member.id) do |f| %>
   <table>
-
-  	<%= form_for @member, url:members_path(@member.id) do |f| %>
 	    <tr>
 	  	  <th><%= "名前" %></th>
 	  	  	<th><%= "(姓)" %></th><td><%= f.text_field :last_name, class:"form-control" %></td>
@@ -36,8 +35,5 @@
       <tr>
         <th><%= link_to "退会する", members_unsubscribe_path %></th>
       </tr>
-	    <% end %>
-</table>
-
-
-
+  </table>
+<% end %>

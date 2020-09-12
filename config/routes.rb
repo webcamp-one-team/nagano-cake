@@ -10,7 +10,8 @@ Rails.application.routes.draw do
     get 'members/my_page' => 'members#show'
     get 'members/unsubscribe' => 'members#unsubscribe'
     patch 'members/withdraw' => 'members#withdraw'
-
+    get 'members/edit_pass' => 'members#edit_pass'
+    patch 'members/update_pass' => 'members#update_pass'
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
     resource :members, only: [:edit, :update, :show]
     resources :carts, only: [:index, :create, :update, :destroy] do
@@ -26,6 +27,7 @@ Rails.application.routes.draw do
     resources :orders, only: [:index, :new, :create, :show, :update]
     post 'order/confirm' => 'orders#confirm', as: 'order_confirm'
     get "order/thanks" => 'orders#thanks', as: 'order_thanks'
+
     devise_for :members
 
   end
@@ -40,7 +42,9 @@ Rails.application.routes.draw do
     resources :order_items, only: [:update]
     resources :items, only: [:index, :show, :edit, :update, :create, :new]
     resources :genres, only: [:index, :edit, :update, :create]
-    resources :members, only: [:index, :show, :edit, :update]
+    resources :members, only: [:index, :show, :edit, :update] do
+    get "orders/confirm"
+    end
   end
 
   scope module: :admins do #URLがadmins_admins_sign_inのように冗長にならないようにscope muduleを使用

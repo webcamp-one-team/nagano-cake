@@ -1,7 +1,9 @@
-<h2> ジャンル一覧・追加</h2>
+<h4><strong>ジャンル一覧・追加</strong></h4>
 <%= form_for @genre, url: admins_genres_path do |f| %>
-
-<h4>ジャンル</h4>
+<br>
+<br>
+<br>
+<h4><strong>ジャンル</strong></h4>
 <%= f.text_field :name %>
 <%= f.select :validity ,[['有効',true],['無効',false]] %>
 <%= f.submit '追加' %>
