@@ -3,15 +3,17 @@ class Members::ItemsController < Members::Base
   before_action :set_genres
 
   def index
-    #キーワードが入力されていれば、whereメソッドとLIKE検索（部分一致検索）を組み合わせて、必要な情報のみ取得する。
-      @genres = Genre.where(validity: true)
-      @items = Item.where(genre_id: @genres.pluck(:id)).where(is_active: true)
-      @items = @items.where('name LIKE ?', "%#{params[:search]}%") if params[:search].present?
+  #キーワードが入力されていれば、whereメソッドとLIKE検索（部分一致検索）を組み合わせて、必要な情報のみ取得する。
+    @genres = Genre.where(validity: true)
+    @items = Item.where(genre_id: @genres.pluck(:id)).where(is_active: true)
+    @items = @items.where('name LIKE ?', "%#{params[:search]}%") if params[:search].present?
+    @all_ranks = Item.find(OrderItem.group(:item_id).order('count(item_id) desc').limit(3).pluck(:item_id))
   end
 
   def show
-    @item = Item.find(params[:id])
-    @cart = @item.carts.build
+  	@item = Item.find(params[:id])
+  	@cart = @item.carts.build
+    @all_ranks = Item.find(OrderItem.group(:item_id).order('count(item_id) desc').limit(3).pluck(:item_id))
   end
 
   private
