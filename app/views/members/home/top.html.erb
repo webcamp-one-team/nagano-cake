@@ -33,13 +33,17 @@
 		<div class="col-xs-9">
 			<!--メインページ-->
 			<div class="top-image">
+				<div class="top-message">
 				<p>ようこそ、NaganoCakeへ！</p>
 				<p>このサイトは、ケーキ販売のECサイトになります。</p>
 				<p>会員でない方も商品の閲覧はできますが、</p>
 				<p>購入には会員登録が必要になります。</p>
+				</div>
 			</div>
 			<div class="recommend-item">
-				<h4>オススメ商品</h4>
+				<div class="recommend-item-title">
+				<h2><strong>オススメ商品</strong></h2>
+				</div>
 				<% @all_rankings.each do |item| %>
 					<%= render 'members/items/list', item: item %>
 				<% end %>

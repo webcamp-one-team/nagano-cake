@@ -31,21 +31,21 @@
 			</table>
 		</div>
 		<div class="col-xs-4">
-			<div class="item-image">
+			<div class="item-show-image">
         		<%= attachment_image_tag @item, :img, format: 'jpeg', fallback: "no_image.jpg", size: "300x300" %>
 			</div>
 		</div>
-		<div class="col-xs-5" style="height:300px; width:300px;">
-			<div class="item-name" style="margin-top:100px; border-bottom:1px solid #000;">
+		<div class="col-xs-5 item-show">
+			<div class="item-show-name">
 				<h4><strong><%= @item.name %></strong></h4>
 			</div>
-			<div class="item-detail" style="margin-top:10px;">
+			<div class="item-show-detail">
 				<p><%= @item.detail %></p>
 			</div>
-			<div class="item-price-with-tax">
+			<div class="item-show-price">
 				<p><%= @item.price %>(<%= price_include_tax(@item.price) %>)</p>
 			</div>
-			<div class="like">
+			<div class="item-show-like">
 			<% if member_signed_in? %>
 				<% if @item.liked_by?(current_member) %>
 					<%= link_to item_likes_path(@item), method: :delete do %>
@@ -63,12 +63,14 @@
 				<%= @item.likes.count %>Likes
 			<% end %>
 			</div>
-			<%= form_with(model: [@item, @cart], local:true, url:{controller:'members/carts', action: 'create'}) do |f| %>
-			    <%= f.label :ご購入個数 %>
-			    <%= f.number_field :amount, value: 1 ,min:1, max:99 %>個
-			    <%= f.hidden_field :item_id, value: @item.id  %>
-			    <%= f.submit "カートに入れる", class: "btn btn-danger" %>
-			 <% end %>
+			<div class="item-show-form">
+				<%= form_with(model: [@item, @cart], local:true, url:{controller:'members/carts', action: 'create'}) do |f| %>
+				    <%= f.label :ご購入個数 %>
+				    <%= f.number_field :amount, value: 1 ,min:1, max:99 %>個
+				    <%= f.hidden_field :item_id, value: @item.id  %>
+				    <%= f.submit "カートに入れる", class: "btn btn-danger" %>
+				 <% end %>
+			</div>
 		</div>
 	</div>
 </div>

@@ -21,7 +21,115 @@
     background-color: rgb(244, 248, 205);
   }
 
-/*ヘッダーの文字高さ調整*/
+
+ /*ヘッダーの文字高さ調整*/
   .nav {
     margin:20px 0;
   }
+
+  /*topページ*/
+  .top-message{
+  text-align:center;
+  }
+  .top-image{
+  margin-bottom:20px;
+  }
+
+  /*listページ*/
+  .list{
+  heght: 150px;
+  width: 160px;
+  margin: 20px;
+  float: left;
+  }
+
+  /*item-showページ*/
+  .item-show{
+  height:300px;
+  width:300px;
+  }
+
+  .item-show-name{
+  margin-top:100px;
+  border-bottom:1px solid #000;
+  }
+
+  .item-show-detail{
+  margin-top:10px;
+  }
+
+  .item-show-Like{
+  text-align:left;
+  }
+
+  .item-show-form{
+  text-align:left;
+  }
+
+  /*order-indexページ*/
+  .all-delete{
+  margin-bottom:20px;
+  }
+
+  /*order-newページ*/
+  .order-new-title{
+  text-align:center;
+  }
+
+  .order-new-payment{
+  text-align:left;
+  }
+
+  .order-new-payment-title{
+  text-align:center;
+  background-color:#66CCFF;
+  margin-top:20px;
+  border-bottom:1px solid #ddd;
+  }
+
+  .order-payment{
+  display: flex;
+  align-items: center;
+  }
+
+  .raddio-button{
+  display: inline-flex;
+  justify-content: space-between;
+  }
+
+  .order-address-title{
+  text-align:center;
+  margin-top:20px;
+  border-bottom:1px solid #ddd;
+  background-color:#66CCFF;
+  }
+
+  .order-address{
+  text-align: center;
+  }
+
+  .confirm-btn{
+  text-align: center;
+  margin-top:20px;
+  }
+
+  /*order-confirmページ*/
+  .order-confirm-btn{
+  margin-top:70px;
+  }
+
+  /*member-showページ*/
+  .register-info{
+  float:left;
+  margin-right:30px;
+  }
+
+  .member-show-address{
+  margin-bottom:20px;
+  display:flex;
+  }
+
+  .member-show-order{
+  display:flex;
+  }
+

@@ -1,7 +1,7 @@
-<div class="list" style="height:150px; width:160px; margin:20px; float:left;">
+<div class="list">
 	<%= link_to item_path(item.id) do  %>
 		<div class="row">
-			<%= attachment_image_tag item, :img, format: 'jpeg', fallback: "no_image.jpg", size: "100x100" %>
+			<%= attachment_image_tag item, :img, format: 'jpeg', fallback: "no_image.jpg", size: "150x100" %>
 			<p><%= item.name %><p>
 			<p><%= price_include_tax(item.price) %></p>
 	<% end %>

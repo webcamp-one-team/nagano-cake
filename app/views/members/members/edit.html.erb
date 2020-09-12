@@ -1,7 +1,6 @@
-<h1>登録情報編集</h1>
+<h2><strong>登録情報編集</strong></h2>
+<%= form_for @member, url:members_path(@member.id) do |f| %>
   <table>
-
-  	<%= form_for @member, url:members_path(@member.id) do |f| %>
 	    <tr>
 	  	  <th><%= "名前" %></th>
 	  	  	<th><%= "(姓)" %></th><td><%= f.text_field :last_name, class:"form-control" %></td>
@@ -31,13 +30,10 @@
 		      <td><%= f.text_field :telephone_number, class:"form-control" %></td>
 		  </tr>
 		  <tr>
-        <th><%= f.submit "変更を保存" %></th>
+        <th><%= f.submit "変更を保存", class:"btn-primary" %></th>
       </tr>
       <tr>
         <th><%= link_to "退会する", members_unsubscribe_path %></th>
       </tr>
-	    <% end %>
-</table>
-
-
-
+  </table>
+<% end %>

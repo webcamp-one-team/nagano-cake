@@ -12,7 +12,7 @@ class Admins::ItemsController < Admins::Base
   def create
     @item = Item.new(item_params)
     @item.save
-    redirect_to admins_items_path(@item.id)
+    redirect_to admins_item_path(@item)
   end
 
   def show
