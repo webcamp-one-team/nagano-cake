@@ -1,40 +1,47 @@
 <div class="container">
-	<div class="row">
-		<div class="col-xs-3">
-			<!--ジャンル検索欄-->
-			<table class="table table-bordered">
-				<tr>
-					<th><strong>ジャンル検索</strong></th>
-				</tr>
-				<% @genres.each do |genre| %>
-				<tr>
-					<td><%= link_to genre.name, genre_path(genre.id) %></td>
-				</tr>
-				<% end %>
-			</table>
-			<table class="table table-bordered">
-				<tr>
-					<th colspan="2"><strong>人気ランキング</strong></th>
-				</tr>
-				<% @all_ranks.each.with_index(1) do |item, i|%>
-                <tr>
-					<th>No.<%= i %></th>
-					<td>
-						<%= link_to item_path(item.id) do  %>
-							<%= attachment_image_tag item, :img, format: 'jpeg', fallback: "no_image.jpg", size: "30x30" %>
-							<p><%= item.name %><p>
-						<% end %>
-					</td>
-				</tr>
-				<% end %>
-			</table>
-		</div>
-		<div class="col-xs-9">
-			<!--商品一覧-->
-			<h1><strong>商品一覧</strong></h1>
-				<% @items.each do |item| %>
-					<%= render 'list', item: item %>
-				<% end %>
-		</div>
-	</div>
+  <div class="row">
+    <div class="col-xs-3">
+      <!--ジャンル検索欄-->
+      <table class="table table-bordered">
+        <tr>
+          <th><strong>ジャンル検索</strong></th>
+        </tr>
+        <% @genres.each do |genre| %>
+        <tr>
+          <td><%= link_to genre.name, genre_path(genre.id) %></td>
+        </tr>
+        <% end %>
+      </table>
+      <table class="table table-bordered">
+        <tr>
+          <th colspan="2"><strong>人気ランキング</strong></th>
+        </tr>
+        <% @all_ranks.each.with_index(1) do |item, i|%>
+        <tr>
+          <th>No.<%= i %></th>
+          <td>
+            <%= link_to item_path(item.id) do  %>
+            <%= attachment_image_tag item, :img, format: 'jpeg', fallback: "no_image.jpg", size: "30x30" %>
+            <p><%= item.name %>
+            <p>
+              <% end %>
+          </td>
+        </tr>
+        <% end %>
+      </table>
+    </div>
+    <div class="search">
+      <%= form_with url: items_path, method: :get, local: true do |f| %>
+      <%= f.text_field :search %>
+      <%= f.submit '商品検索', name: nil, class: "btn btn-primary" %>
+      <% end %>
+    </div>
+    <div class="col-xs-9">
+      <!--商品一覧-->
+      <h1><strong>商品一覧</strong></h1>
+      <% @items.each do |item| %>
+      <%= render 'list', item: item %>
+      <% end %>
+    </div>
+  </div>
 </div>
