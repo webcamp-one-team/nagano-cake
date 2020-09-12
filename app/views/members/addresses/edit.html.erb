@@ -1,5 +1,5 @@
 <!--配送先編集-->
-<div class="container">
+<div id="wrapper">
 	<div class="row">
 		<div class="col-xs-1"></div>
 		<div class="col-xs-10">
@@ -11,7 +11,7 @@
 			<%= f.text_field :address %>
 			<p>宛名</p>
 			<%= f.text_field :name %>
-			<%= f.submit "編集する" %>
+			<%= f.submit "編集する", class:"btn btn-default" %>
 			<% end %>
 		</div>
 		<div class="col-xs-1"></div>

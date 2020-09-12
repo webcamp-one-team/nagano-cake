@@ -1,40 +1,42 @@
 <!--商品詳細-->
-<div class="container">
-	<div class="row">
-		<div class="col-xs-3">
-			<!--ジャンル検索欄-->
-			<table class="table table-bordered">
-				<tr>
-					<th><strong>ジャンル検索</strong></th>
-				</tr>
-				<% @genres.each do |genre| %>
-				<tr>
-					<td><%= link_to genre.name, genre_path(genre.id) %></td>
-				</tr>
+<div id="wrapper">
+	<!--ジャンル検索欄-->
+	<aside id="sidebar">
+		<h3 class="heading">ジャンル検索</h3>
+	    <article>
+	    		<% @genres.each do |genre| %>
+				<ul>
+					<li><%= link_to genre.name, genre_path(genre.id) %></li>
+				</ul>
 				<% end %>
-			</table>
-		</div>
-		<div class="col-xs-4">
-			<div class="item-image">
-        		<%= attachment_image_tag @item, :img, format: 'jpeg', fallback: "no_image.jpg", size: "300x300" %>
+	    </article>
+	</aside>
+	<section id="main">
+		<section class="content">
+			<div class="row">
+				<div class="col-xs-5">
+					<div class="item-image">
+		        		<%= attachment_image_tag @item, :img, format: 'jpeg', fallback: "no_image.jpg", size: "300x300" %>
+					</div>
+				</div>
+				<div class="col-xs-7" style="height:300px; width:300px;">
+					<div class="item-name" style="margin-top:100px; border-bottom:1px solid #000;">
+						<h4><%= @item.name %></h4>
+					</div>
+					<div class="item-detail" style="margin-top:10px; border-bottom:1px solid #000;">
+						<p><%= @item.detail %></p>
+					</div>
+					<div class="item-price-with-tax" style="border-bottom:1px solid #000;">
+						<p><%= @item.price %>(<%= price_include_tax(@item.price) %>)</p>
+					</div>
+					<%= form_with(model: [@item, @cart], local:true, url:{controller:'members/carts', action: 'create'}) do |f| %>
+					    <%= f.label :ご購入個数 %>
+					    <%= f.number_field :amount, value: 1 ,min:1, max:99 %>個
+					    <%= f.hidden_field :item_id, value: @item.id  %>
+					    <%= f.submit "カートに入れる", class: "btn btn-danger" %>
+					 <% end %>
+				</div>
 			</div>
-		</div>
-		<div class="col-xs-5" style="height:300px; width:300px;">
-			<div class="item-name" style="margin-top:100px; border-bottom:1px solid #000;">
-				<h4><%= @item.name %></h4>
-			</div>
-			<div class="item-detail" style="margin-top:10px; border-bottom:1px solid #000;">
-				<p><%= @item.detail %></p>
-			</div>
-			<div class="item-price-with-tax" style="border-bottom:1px solid #000;">
-				<p><%= @item.price %>(<%= price_include_tax(@item.price) %>)</p>
-			</div>
-			<%= form_with(model: [@item, @cart], local:true, url:{controller:'members/carts', action: 'create'}) do |f| %>
-			    <%= f.label :ご購入個数 %>
-			    <%= f.number_field :amount, value: 1 ,min:1, max:99 %>個
-			    <%= f.hidden_field :item_id, value: @item.id  %>
-			    <%= f.submit "カートに入れる", class: "btn btn-danger" %>
-			 <% end %>
-		</div>
-	</div>
+		</section>
+	</section>
 </div>

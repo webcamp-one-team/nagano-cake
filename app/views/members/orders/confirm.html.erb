@@ -1,8 +1,8 @@
-<div class="container">
+<div id="wrapper">
 	<div class="row">
 		<div class="col-xs-1"></div>
 		<div class="col-xs-7">
-			<h1><strong>注文情報確認</strong></h1>
+			<h3 class="heading">注文情報確認</h3>
 			<!--注文商品一覧-->
 			<%= form_with(model: @order, local:true) do |f| %>
 				<table class="table table-bordered">
@@ -30,9 +30,9 @@
 					</tbody>
 				</table>
 				<!--支払方法確認-->
-				<h4><strong>支払方法</strong></h4>
+				<h5 class="heading">支払方法</h4>
 				<%= @order.payment_method %>
-				<h4><strong>お届け先</strong></h4>
+				<h5 class="heading">お届け先</h4>
 				<%= @order.postal_code %>
       			<%= @order.address %>
       			<%= @order.name %>
