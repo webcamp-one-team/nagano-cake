@@ -13,6 +13,22 @@
 				</tr>
 				<% end %>
 			</table>
+			<table class="table table-bordered">
+				<tr>
+					<th colspan="2"><strong>人気ランキング</strong></th>
+				</tr>
+				<% @all_ranks.each.with_index(1) do |item, i|%>
+                <tr>
+					<th>No.<%= i %></th>
+					<td>
+						<%= link_to item_path(item.id) do  %>
+							<%= attachment_image_tag item, :img, format: 'jpeg', fallback: "no_image.jpg", size: "30x30" %>
+							<p><%= item.name %><p>
+						<% end %>
+					</td>
+				</tr>
+				<% end %>
+			</table>
 		</div>
 		<div class="col-xs-4">
 			<div class="item-image">
@@ -21,13 +37,31 @@
 		</div>
 		<div class="col-xs-5" style="height:300px; width:300px;">
 			<div class="item-name" style="margin-top:100px; border-bottom:1px solid #000;">
-				<h4><%= @item.name %></h4>
+				<h4><strong><%= @item.name %></strong></h4>
 			</div>
-			<div class="item-detail" style="margin-top:10px; border-bottom:1px solid #000;">
+			<div class="item-detail" style="margin-top:10px;">
 				<p><%= @item.detail %></p>
 			</div>
-			<div class="item-price-with-tax" style="border-bottom:1px solid #000;">
+			<div class="item-price-with-tax">
 				<p><%= @item.price %>(<%= price_include_tax(@item.price) %>)</p>
+			</div>
+			<div class="like">
+			<% if member_signed_in? %>
+				<% if @item.liked_by?(current_member) %>
+					<%= link_to item_likes_path(@item), method: :delete do %>
+						<i class="fa fa-heart" aria-hidden="true" style="color: red;"></i>
+						<%= @item.likes.count %>Likes
+					<% end %>
+				<% else %>
+					<%= link_to item_likes_path(@item), method: :post do %>
+						<i class="fa fa-heart" aria-hidden="true"></i>
+						<%= @item.likes.count %>Likes
+					<% end %>
+				<% end %>
+			<% else %>
+				<i class="fa fa-heart"></i>
+				<%= @item.likes.count %>Likes
+			<% end %>
 			</div>
 			<%= form_with(model: [@item, @cart], local:true, url:{controller:'members/carts', action: 'create'}) do |f| %>
 			    <%= f.label :ご購入個数 %>
