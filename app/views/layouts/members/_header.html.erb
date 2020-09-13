@@ -24,7 +24,7 @@
     </nav>
     <div class="test">
       <% if member_signed_in? %>
-      ようこそ、<%= current_member.last_name %>さん<span class="glyphicon glyphicon-tree-conifer" aria-hidden="true"></span>
+      ようこそ、<%= current_member.last_name %><%= current_member.first_name %>さん<span class="glyphicon glyphicon-tree-conifer" aria-hidden="true"></span>
       <% else %>
         ようこそ、ゲストさん
       <% end %>
