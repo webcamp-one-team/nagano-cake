@@ -1,46 +1,50 @@
-<h4><strong>商品詳細</strong></h4>
-<br>
-<br>
-<br>
-<div class="row">
-    <div class="col-sm-5">
-    	<div align="center">
-    		<%= attachment_image_tag @item, :img, format: 'jpeg', fallback: "no_image.jpg", size: "200x200" %>
-    	</div>
-	</div>
-	<div class="col-sm-7">
-		<table class="table table-noborder">
-			<thead>
-				<th class="col-4"></th>
-				<th class="col-8"></th>
-			</thead>
-			<tbody>
-				<tr>
-					<td class="col-4"><strong>商品名</strong></td>
-					<td class="col-8"><%= @item.name %><br></td>
-				</tr>
-				<tr>
-					<td class="col-4"><strong>商品説明</strong></td>
-					<td class="col-8"><%= @item.detail %><br></td>
-				</tr>
-				<tr>
-					<td class="col-4"><strong>ジャンル</strong></td>
-					<td class="col-8"><%= @item.genre.name %></td>
-				</tr>
-				<tr>
-					<td class="col-4"><strong>価格</strong></td>
-					<td class="col-8"><%= @item.price %>(<%= tax(@item.price) %>)</td>
-				</tr>
-				<tr>
-					<td class="col-4"><strong>販売ステータス</strong></td>
-					<% if @item.is_active == true %>
-						<td class="col-8">販売中</td>
-					<% else %>
-						<td class="col-8">売り切れ</td>
-					<% end %>
-				</tr>
-			</tbody>
-		</table>
+<div id="wrapper">
+    <div class="row">
+	    <div class="col-xs-1"></div>
+	    <div class="col-xs-10">
+			<h3 class="heading">商品詳細</h3>
+			<div class="container">
+				<div class="row">
+				    <div class="col-sm-3">
+				    	<div align="center">
+				    		<%= attachment_image_tag @item, :img, format: 'jpeg', fallback: "no_image.jpg", size: "200x200" %>
+				    	</div>
+					</div>
+					<div class="col-sm-6">
+						<table class="table table-bordered">
+							<tbody>
+								<tr>
+									<td><strong>商品名</strong></td>
+									<td><%= @item.name %><br></td>
+								</tr>
+								<tr>
+									<td><strong>商品説明</strong></td>
+									<td><%= @item.detail %><br></td>
+								</tr>
+								<tr>
+									<td><strong>ジャンル</strong></td>
+									<td><%= @item.genre.name %></td>
+								</tr>
+								<tr>
+									<td><strong>価格</strong></td>
+									<td><%= @item.price %>(<%= tax(@item.price) %>)円</td>
+								</tr>
+								<tr>
+									<td><strong>販売ステータス</strong></td>
+									<% if @item.is_active == true %>
+									<td>販売中</td>
+									<% else %>
+									<td>売り切れ</td>
+									<% end %>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					<div class="col-sm-3">
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-1"></div>
 	</div>
 </div>
 <div align="right"><button type="button" class="btn btn-secondary"><%= link_to "編集する", edit_admins_item_path(@item) %></button></div>

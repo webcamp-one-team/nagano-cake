@@ -1,13 +1,17 @@
-<h4><strong>ジャンル編集</strong></h4>
-<br>
-<br>
-<div class="row">
-	<div class="col-xs-9">
-		<%= form_for @genre, url: admins_genre_path do |f| %>
-			<h4><strong>ジャンル</strong></h4>
-			<%= f.text_field :name %>
-			<%= f.select :validity ,[['有効',true],['無効',false]] %>
-			<%= f.submit '変更を保存する' %>
-		<% end %>
+<div id="wrapper">
+	<div class="row">
+		<div class="col-xs-1"></div>
+		<div class="col-xs-10">
+			<h3 class="heading">ジャンル編集</h3>
+			<br>
+			<br>
+			<%= form_with model: @genre, url: admins_genre_path, local: true do |f| %>
+				<h4><strong>ジャンル</strong></h4>
+				<%= f.text_field :name %>
+				<%= f.select :validity ,[['有効',true],['無効',false]] %>
+				<%= f.submit '変更を保存する' %>
+			<% end %>
+		</div>
+		<div class="col-xs-1"></div>
 	</div>
 </div>
