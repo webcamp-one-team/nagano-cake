@@ -3,12 +3,12 @@
 		<div class="col-xs-1"></div>
 		<div class="col-xs-10">
 			<%= flash[:error] %>
-			<% if @member.errors.any? %>
-				<h3><%= @member.errors.count%>個の誤りがあります。</h3>
-					<% @member.errors.full_messages.each do |msg| %>
-						<%= msg %>
-					<% end %>
-			<% end %>
+<% if @member.errors.any? %>
+	<h3><%= @member.errors.count%>個の誤りがあります。</h3>
+		<% @member.errors.full_messages.each do |msg| %>
+			<%= msg %>
+		<% end %>
+<% end %>
 			<h3 class="heading">登録情報編集</h3>
 			<%= form_with url: members_update_pass_path, local:true, method: :patch do |f| %>
 			    <table>
@@ -21,7 +21,7 @@
 						<td><%= f.password_field :password_confirmation, class:"form-control" %></td>
 					</tr>
 					<tr>
-			        	<th><%= f.submit "変更を保存" %></th>
+			        	<th><%= f.submit "変更を保存", class:"btn btn-primary %></th>
 			        </tr>
 			    </table>
 			<% end %>
