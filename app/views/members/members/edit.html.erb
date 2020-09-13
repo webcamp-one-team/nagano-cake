@@ -1,39 +1,43 @@
-<h1>登録情報編集</h1>
-<%= form_for @member, url:members_path(@member.id) do |f| %>
-  <table>
-	    <tr>
-	  	  <th><%= "名前" %></th>
-	  	  	<th><%= "(姓)" %></th><td><%= f.text_field :last_name, class:"form-control" %></td>
-　　　     	<th><%= "(名)" %></th><td><%= f.text_field :first_name, class:"form-control" %></td>
-	    </tr>
-		  <tr>
-		    <th><%= "フリガナ" %></th>
-		      <th><%= "(セイ)" %></th>
-		       <td><%= f.text_field :last_name_kana, class:"form-control" %></td>
-	　　　     <th><%= "(メイ)" %></th>
-	　　　  　   <td><%= f.text_field :first_name_kana, class:"form-control" %></td>
-		  </tr>
-		  <tr>
-		    <th><%= "メールアドレス" %></th>
-		      <td><%= f.text_field :email, class:"form-control" %></td>
-		  </tr>
-		  <tr>
-		  	<th><%= "郵便番号(ハイフンなし)" %></th>
-		      <td><%= f.text_field :postal_code, class:"form-control" %></td>
-		  </tr>
-		  <tr>
-		    <th><%= "住所" %></th>
-		      <td><%= f.text_field :address, class:"form-control" %></td>
-		  </tr>
-		  <tr>
-		    <th><%= "電話番号(ハイフンなし)" %></th>
-		      <td><%= f.text_field :telephone_number, class:"form-control" %></td>
-		  </tr>
-		  <tr>
-        <th><%= f.submit "変更を保存" %></th>
-      </tr>
-      <tr>
-        <th><%= link_to "退会する", members_unsubscribe_path %></th>
-      </tr>
-  </table>
-<% end %>
+<div id="wrapper">
+	<div class="row">
+		<div class="col-xs-1"></div>
+		<div class="col-xs-10">
+		<h3 class="heading">登録情報編集</h3>
+		<%= form_with model:@member, url:members_path(@member.id) do |f| %>
+		<table class="table table-bordered" >
+		    <tr>
+		  	 	<th>名前</th>
+		  	  	<td>(姓)<%= f.text_field :last_name, class:"form-control" %></td>
+				<td>(名)<%= f.text_field :first_name, class:"form-control" %></td>
+		    </tr>
+			<tr>
+			    <th>フリガナ</th>
+			    <td>(セイ)<%= f.text_field :last_name_kana, class:"form-control" %></td>
+				<td>(メイ)<%= f.text_field :first_name_kana, class:"form-control" %></td>
+			</tr>
+			<tr>
+			    <th><%= "メールアドレス" %></th>
+			    <td><%= f.text_field :email, class:"form-control" %></td>
+			</tr>
+			<tr>
+			  	<th><%= "郵便番号(ハイフンなし)" %></th>
+			    <td><%= f.text_field :postal_code, class:"form-control" %></td>
+			</tr>
+			<tr>
+			    <th><%= "住所" %></th>
+			    <td><%= f.text_field :address, class:"form-control" %></td>
+			</tr>
+			<tr>
+			    <th><%= "電話番号(ハイフンなし)" %></th>
+			    <td><%= f.text_field :telephone_number, class:"form-control" %></td>
+			</tr>
+		</table>
+			<tr>
+		        <th><%= f.submit "変更を保存", class:"btn btn-primary %></th>
+		        <th><%= link_to "退会する", members_unsubscribe_path %></th>
+	        </tr>
+		<% end %>
+		</div>
+		<div class="col-xs-1"></div>
+	</div>
+</div>

@@ -47,7 +47,7 @@ class Members::OrdersController < Members::Base
        end
          render :thanks
      else
-       redirect_to home_top_path
+       redirect_to top_path_url
      end
   end
 
