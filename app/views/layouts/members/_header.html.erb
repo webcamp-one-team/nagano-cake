@@ -1,35 +1,38 @@
-<nav class="navbar navbar-default" style="height:100px; margin-bottom:10px; color:yellow;">
-  <div class="container-fluid">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarEexample1">
-        <span class="sr-only"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-       <h1 class="navbar-brand">
-        <%= link_to 'Nagano Cake', top_path_url %>
-       <!--  <%= image_tag 'IMG_3108.jpeg', :size => '100x70', :position => 'fixed' %> -->
-        </h1>
-    </div>
-    <div class="collapse navbar-collapse" id="navbarEexample1">
-      <ul class="nav navbar-nav navbar-right">
-        <% if member_signed_in? %>
-        <p class="navbar-text">ようこそ、<%= current_member.last_name %><%= current_member.first_name %>さん！</p>
-
-        <li><%= link_to "マイページ", members_my_page_path, class:"glyphicon glyphicon-home" %></li>
-        <li><%= link_to "商品一覧", items_path, class:"glyphicon glyphicon-list-alt" %></li>
-        <li><%= link_to "カート", carts_path, class:"glyphicon glyphicon-shopping-cart" %></li>
-        <li><%= link_to "ログアウト", destroy_member_session_path, method: :delete, class:"glyphicon glyphicon-log-out" %></li>
-        <% else %>
-        <p class="navbar-text">ようこそ、ゲストさん！</p>
-        <li><%= link_to "About", home_about_path, class:"glyphicon glyphicon-heart" %></li>
-        <li><%= link_to "商品一覧", items_path, class:"glyphicon glyphicon-list-alt" %></li>
-        <li><%= link_to "新規登録", new_member_registration_path, class:"glyphicon glyphicon-user" %></li>
-        <li><%= link_to "ログイン", new_member_session_path, class:"glyphicon glyphicon-log-in" %></li>
-        <% end %>
-      </ul>
+<header id="header">
+  <div class="logo">
+    <p class="navbar-brand"><%= image_tag 'store.jpeg' %><%= link_to "　　ながのCake　　", top_path_url %><span>⻑野県のとある⼩さな洋菓⼦店</span></p>
+  </div>
+  <div class="info">
+    <nav id="mainNav">
+      <div class="panel">
+        <ul>
+          <% if member_signed_in? %>
+          <!-- <p class="navbar-text">ようこそ、<%= current_member.last_name %>さん！</p> -->
+          <li><%= link_to "マイページ", members_my_page_path %></li>
+          <li><%= link_to "商品一覧", items_path %></li>
+          <li><%= link_to "カート", carts_path %></li>
+          <li><%= link_to "ログアウト", destroy_member_session_path, method: :delete %></li>
+          <% else %>
+          <!-- <p class="navbar-text">ようこそ、ゲストさん！</p> -->
+          <li><%= link_to "About", home_about_path %></li>
+          <li><%= link_to "商品一覧", items_path %></li>
+          <li><%= link_to "新規登録", new_member_registration_path %></li>
+          <li><%= link_to "ログイン", new_member_session_path %></li>
+          <% end %>
+        </ul>
+      </div>
+    </nav>
+    <div class="test">
+      <% if member_signed_in? %>
+      ようこそ、<%= current_member.last_name %><%= current_member.first_name %>さん<span class="glyphicon glyphicon-tree-conifer" aria-hidden="true"></span>
+      <% else %>
+        ようこそ、ゲストさん
+      <% end %>
     </div>
   </div>
-</nav>
+</header>
+<div id="wrapper">
+  <div id="mainBanner">
+    <%= image_tag '3852785_m.jpg', size: '930x230' %>
+  </div>
+</div>

@@ -1,18 +1,15 @@
-<div class="container">
-  <div class="row">
-    <div class="col-xs-3">
-      <!--ジャンル検索欄-->
-      <table class="table table-bordered">
-        <tr>
-          <th><strong>ジャンル検索</strong></th>
-        </tr>
-        <% @genres.each do |genre| %>
-        <tr>
-          <td><%= link_to genre.name, genre_path(genre.id) %></td>
-        </tr>
-        <% end %>
-      </table>
-      <table class="table table-bordered">
+<div id="wrapper">
+	<!-- ジャンル検索 -->
+	<aside id="sidebar">
+		<h3 class="heading">ジャンル検索</h3>
+	    <article>
+	    		<% @genres.each do |genre| %>
+				<ul>
+					<li><%= link_to genre.name, genre_path(genre.id) %></li>
+				</ul>
+				<% end %>
+	    </article>
+    <table class="table table-bordered">
         <tr>
           <th colspan="2"><strong>人気ランキング</strong></th>
         </tr>
@@ -36,6 +33,31 @@
       <%= f.submit '商品検索', name: nil, class: "btn btn-primary" %>
       <% end %>
     </div>
+	</aside>
+	<!--商品一覧-->
+	<section id="main">
+		<section class="content">
+			<h3 class="heading">　商品一覧</h3>
+			<% @items.each do |item| %>
+				<%= render 'list', item: item %>
+			<% end %>
+		</section>
+	</section>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-3">
+      <!--ジャンル検索欄-->
+      <table class="table table-bordered">
+        <tr>
+          <th><strong>ジャンル検索</strong></th>
+        </tr>
+        <% @genres.each do |genre| %>
+        <tr>
+          <td><%= link_to genre.name, genre_path(genre.id) %></td>
+        </tr>
+        <% end %>
+      </table>
+      
     <div class="col-xs-9">
       <!--商品一覧-->
       <h1><strong>商品一覧</strong></h1>
