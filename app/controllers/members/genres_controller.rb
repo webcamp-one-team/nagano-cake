@@ -4,7 +4,7 @@ class Members::GenresController < Members::Base
   def show
   	@genre = Genre.find(params[:id])
   	@genres = Genre.where(validity: true)
-  	@items = @genre.items
+  	@items = @genre.items.includes(:genre).where(genres:{validity: true}).is_active
   end
 
   private

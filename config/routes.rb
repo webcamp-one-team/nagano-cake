@@ -1,11 +1,10 @@
 Rails.application.routes.draw do
 
 
-
 #会員側のルーティング#
 
   scope module: :members do
-    get 'home/top' => 'home#top'
+    get '/' => 'home#top', as: 'top_path'
     get 'home/about' => 'home#about'
     get 'members/my_page' => 'members#show'
     get 'members/unsubscribe' => 'members#unsubscribe'
@@ -19,9 +18,19 @@ Rails.application.routes.draw do
         delete 'destroy_all'
       end
     end
-    resources :items, only: [:index, :show]
+    
+    resources :items, only: [:index, :show] do
+      resource :likes, only: [:create, :destroy]
+    end
+    
     resources :genres, only: [:show]
+    resources :items, only: [:index, :show] do
+      # collection do
+      #   search 'search'
+      # end
+    end
 
+    resources :genres, only: [:show]
     resources :orders, only: [:index, :new, :create, :show, :update]
     post 'order/confirm' => 'orders#confirm', as: 'order_confirm'
     get "order/thanks" => 'orders#thanks', as: 'order_thanks'
@@ -29,8 +38,6 @@ Rails.application.routes.draw do
     devise_for :members
 
   end
-
-
 
   #管理者側のルーティング
 

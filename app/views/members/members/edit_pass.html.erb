@@ -1,27 +1,31 @@
-<%= flash[:error] %>
-
+<div id="wrapper">
+	<div class="row">
+		<div class="col-xs-1"></div>
+		<div class="col-xs-10">
+			<%= flash[:error] %>
 <% if @member.errors.any? %>
 	<h3><%= @member.errors.count%>個の誤りがあります。</h3>
 		<% @member.errors.full_messages.each do |msg| %>
 			<%= msg %>
 		<% end %>
 <% end %>
-
-
-
-<h1>登録情報編集</h1>
-<%= form_with url: members_update_pass_path, local:true, method: :patch do |f| %>
-  <table>
-		  <tr>
-		    <th><%= "パスワード" %></th>
-		      <td><%= f.password_field :password, class:"form-control" %></td>
-		  </tr>
-		  <tr>
-		  <th><%= "パスワード確認用" %></th>
-		      <td><%= f.password_field :password_confirmation, class:"form-control" %></td>
-		  </tr>
-		  <tr>
-        <th><%= f.submit "変更を保存", class:"btn btn-primary" %></th>
-      </tr>
-  </table>
-<% end %>
+			<h3 class="heading">登録情報編集</h3>
+			<%= form_with url: members_update_pass_path, local:true, method: :patch do |f| %>
+			    <table>
+					<tr>
+						<th><%= "パスワード" %></th>
+						<td><%= f.password_field :password, class:"form-control" %></td>
+					</tr>
+					<tr>
+						<th><%= "パスワード確認用" %></th>
+						<td><%= f.password_field :password_confirmation, class:"form-control" %></td>
+					</tr>
+					<tr>
+			        	<th><%= f.submit "変更を保存", class:"btn btn-primary %></th>
+			        </tr>
+			    </table>
+			<% end %>
+		</div>
+		<div class="col-xs-1"></div>
+	</div>
+</div>
