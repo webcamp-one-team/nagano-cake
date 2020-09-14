@@ -1,14 +1,19 @@
 <!DOCTYPE html>
 <html>
-
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, user-scalable=yes, maximum-scale=1.0, minimum-scale=1.0">
   <title>namespace - admin</title>
+  <link rel="stylesheet" href="style.css" type="text/css" media="screen">
   <%= csrf_meta_tags %>
-  <%= stylesheet_link_tag    'admins', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= stylesheet_link_tag    "application", media: "all" %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <script src="js/jquery1.7.2.min.js"></script>
+  <script src="js/script.js"></script>
 </head>
 
 <body>
+<div class="background-layout">
   <% content_for :content do %>
   <%= render 'layouts/admins/header' %>
   <div class="container">
@@ -17,6 +22,7 @@
   <%= render 'layouts/admins/footer' %>
   <% end %>
   <%= render template: "layouts/application" %>
+</div>
 </body>
 
 </html>
