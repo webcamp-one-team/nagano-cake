@@ -1,6 +1,7 @@
-<div class="container">
+<div id="wrapper">
   <div class="row">
-    <div class="col-xs-12">
+    <div class="col-xs-1"></div>
+    <div class="col-xs-10">
       <h2>管理者ログイン</h2>
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
       <div class="field">
@@ -17,69 +18,72 @@
       <% end %>
       <%= link_to "会員の方はこちら", new_member_session_path, class: "btn btn-lg" %>
     </div>
+    <div class="col-xs-1"></div>
   </div>
-  <div class="initial_admins">
-    <h1>初期登録Admins</h1>
-    <table>
-      <tr>
-        <th>メールアドレス</th>
-        <th>パスワード</th>
-      </tr>
-      <tr>
-        <td>j@j</td>
-        <td>jjjjjj</td>
-      </tr>
-      <tr>
-        <td>k@k</td>
-        <td>kkkkkk</td>
-      </tr>
-      <tr>
-        <td>l@l</td>
-        <td>llllll</td>
-      </tr>
-    </table>
-  </div>
-  <div class="initial_admins">
-    <h1>初期登録Genres</h1>
-    <table>
-      <tr>
-        <th>ケーキ</th>
-      </tr>
-      <tr>
-        <th>チョコレート</th>
-      </tr>
-      <tr>
-        <th>焼き菓子（無効）</th>
-      </tr>
-      <tr>
-        <th>和菓子</th>
-      </tr>
-      <tr>
-        <th>アイス</th>
-      </tr>
-      <tr>
-        <th>クレープ</th>
-      </tr>
-    </table>
-  </div>
-  <div class="initial_admins">
-    <h1>初期登録Items</h1>
-    <table>
-      <tr>
-        <th>ショートケーキ</th>
-      </tr>
-      <tr>
-        <th>チョコクランチ（おいしい）</th>
-      </tr>
-      <tr>
-        <th>チョコっとおいしいパン（無効）</th>
-      </tr>
-      <tr>
-        <th>焼き菓子のようななにか</th>
-      </tr>
-      <tr>
-        <th>焼いたお菓子（無効）</th>
-      </tr>
-    </table>
+  <div class="row">
+    <div class="initial_admins">
+      <h1>初期登録Admins</h1>
+      <table>
+        <tr>
+          <th>メールアドレス</th>
+          <th>パスワード</th>
+        </tr>
+        <tr>
+          <td>j@j</td>
+          <td>jjjjjj</td>
+        </tr>
+        <tr>
+          <td>k@k</td>
+          <td>kkkkkk</td>
+        </tr>
+        <tr>
+          <td>l@l</td>
+          <td>llllll</td>
+        </tr>
+      </table>
+    </div>
+    <div class="initial_admins">
+      <h1>初期登録Genres</h1>
+      <table>
+        <tr>
+          <th>ケーキ</th>
+        </tr>
+        <tr>
+          <th>チョコレート</th>
+        </tr>
+        <tr>
+          <th>焼き菓子（無効）</th>
+        </tr>
+        <tr>
+          <th>和菓子</th>
+        </tr>
+        <tr>
+          <th>アイス</th>
+        </tr>
+        <tr>
+          <th>クレープ</th>
+        </tr>
+      </table>
+    </div>
+    <div class="initial_admins">
+      <h1>初期登録Items</h1>
+      <table>
+        <tr>
+          <th>ショートケーキ</th>
+        </tr>
+        <tr>
+          <th>チョコクランチ（おいしい）</th>
+        </tr>
+        <tr>
+          <th>チョコっとおいしいパン（無効）</th>
+        </tr>
+        <tr>
+          <th>焼き菓子のようななにか</th>
+        </tr>
+        <tr>
+          <th>焼いたお菓子（無効）</th>
+        </tr>
+      </table>
+    </div>
   </div>
 </div>
