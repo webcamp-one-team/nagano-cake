@@ -11,7 +11,12 @@ class Member < ApplicationRecord
   has_many :carts
   has_many :orders
   has_many :cart_items
+  has_many :items, through: :cart_items
   has_many :likes, dependent: :destroy
+
+
+
+
 
   #validates :last_name, format: { with: /\A[^\p{katakana}\u{30fc}]+\z/ }
   #validates :first_name, format: { with: /\A[^\p{katakana}\u{30fc}]+\z/ }
@@ -31,4 +36,5 @@ class Member < ApplicationRecord
   #よってこのバリデーションは入力される文字の個数が最低１文字かつ最初から最後まで「ア～ン＋伸ばし棒ー」どれかが入るものと一致しないのであればはじくという意味。
   #15～16行目の^は[]の中で使うと否定に変わる。つまりカタカナと長音譜は含まないという意味。
   #20行目は\Aで頭に0が入る文字列かつ\dで数字のみを9~14文字の範囲で指定する文字列を意味する。
+
 end
