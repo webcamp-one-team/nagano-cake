@@ -1,5 +1,9 @@
 <!--顧客側のトップページ-->
 <div id="wrapper">
+  <div id="mainBanner">
+    <%= image_tag '3852785_m.jpg', size: '930x230' %>
+  </div>
+</div>
 <!-- ジャンル検索 -->
 	<aside id="sidebar">
 		<h3 class="heading">ジャンル検索</h3>
@@ -9,8 +13,21 @@
 					<li><%= link_to genre.name, genre_path(genre.id) %></li>
 				</ul>
 				<% end %>
+      </article>
+      <article>
+				<h3 class="heading">人気ランキング</strong></th>
+				<% @all_ranks.each.with_index(1) do |item, i|%>
+        <ul>
+					<li>No.<%= i %></li>
+					<li><%= link_to item_path(item.id) do  %></li>
+							<%= attachment_image_tag item, :img, format: 'jpeg', fallback: "no_image.jpg", size: "30x30" %>
+					<li><%= item.name %><p></li>
+						<% end %>
+        <ul>
+				<% end %>
 	    </article>
 	</aside>
+
 	<section id="main">
 		<section class="content">
 		<!--メインページ-->
@@ -19,9 +36,9 @@
 			<p>　会員でない方も商品の閲覧はできますが、</p>
 			<p>　購入には会員登録が必要になります。</p>
 			<h3 class="heading">　オススメ商品</h3>
-			<% @items.each do |item| %>
-				<%= render 'members/items/list', item: item %>
-			<% end %>
+				<% @all_rankings.each do |item| %>
+					<%= render 'members/items/list', item: item %>
+				<% end %>
 		</section>
 	</section>
 </div>
