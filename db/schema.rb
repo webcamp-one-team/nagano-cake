@@ -73,16 +73,15 @@ ActiveRecord::Schema.define(version: 2020_09_11_043604) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.string "last_name"
-    t.string "string"
     t.string "first_name"
     t.string "last_name_kana"
     t.string "first_name_kana"
     t.string "postal_code"
     t.string "address"
     t.string "telephone_number"
+    t.boolean "is_deleted", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "is_deleted", default: false, null: false
     t.index ["email"], name: "index_members_on_email", unique: true
     t.index ["reset_password_token"], name: "index_members_on_reset_password_token", unique: true
   end

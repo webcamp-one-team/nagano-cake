@@ -12,7 +12,8 @@ class Members::MembersController < Members::Base
   def update
     @member = current_member
     @member.update(member_params)
-    redirect_to home_top_path
+    flash[:success]="変更が正常に登録されました。"
+    redirect_to members_my_page_path
   end
   def unsubscribe
     @member = current_member
@@ -21,8 +22,8 @@ class Members::MembersController < Members::Base
   def withdraw
     @member = current_member
     @member.update(is_deleted: true)
-    reset_session
-    redirect_to home_top_path
+    flash[:success]="ご愛顧ありがとうございました。またのご利用お待ちしております。"
+    redirect_to top_path_path
   end
   def edit_pass
     @member = current_member
@@ -51,6 +52,3 @@ class Members::MembersController < Members::Base
 
   end
 end
-
-
-

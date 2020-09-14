@@ -1,41 +1,44 @@
-<div class="container">
+<div id="wrapper">
 	<div class="row">
 		<div class="col-xs-1"></div>
 		<div class="col-xs-7">
-			<h1><strong>注文履歴詳細</strong></h1>
+			<h3 class="heading">注文履歴詳細</h3>
 			<p><strong>注文情報</strong></p>
 			<table class="table table-borderd">
 				<tr>
-					<th class="info">注文日</th><td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
+					<th>注文日</th><td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
 				</tr>
 				<tr>
-					<th class="info">配送先</th><td><%= @order.postal_code %><%= @order.address %><%= @order.name %></td>
+					<th>配送先</th><td><%= @order.postal_code %><%= @order.address %><%= @order.name %></td>
 				</tr>
 				<tr>
-					<th class="info">支払方法</th><td><%= @order.payment_method %></td>
+					<th>支払方法</th><td><%= @order.payment_method %></td>
 				</tr>
 				<tr>
-					<th class="info">ステータス</th><td><%= @order.order_status %></td>
+					<th>ステータス</th><td><%= @order.order_status %></td>
 				</tr>
 			</table>
 			<P><strong>注文内容</strong></P>
 			<table class="table table-borderd">
-				<tr>
-					<th class="info">商品</th>
-					<th class="info">単価（税込）</th>
-					<th class="info">個数</th>
-					<th class="info">小計</th>
-				</tr>
+				<thead>
+					<tr>
+						<th>商品</th>
+						<th>単価（税込）</th>
+						<th>個数</th>
+						<th>小計</th>
+					</tr>
+				</thead>
 				<% sum_all = 0 %>
 				<% @order.order_items.each do |order_item| %>
-				<tr>
-					<td><%= order_item.item.name %></td>
-					<td><%= price_include_tax(order_item.item.price) %></td>
-					<td><%= order_item.amount %></td>
-					<td><%= sum_item = price_include_tax(order_item.item.price).to_i * order_item.amount %>
+				<tbody>
+					<tr>
+						<td><%= order_item.item.name %></td>
+						<td><%= price_include_tax(order_item.item.price) %></td>
+						<td><%= order_item.amount %></td>
+						<td><%= sum_item = price_include_tax(order_item.item.price).to_i * order_item.amount %></td>
 						<% sum_all += sum_item.to_i %>
-					</td>
-				</tr>
+					</tr>
+				</tbody>
 				<% end %>
 			</table>
 		</div>

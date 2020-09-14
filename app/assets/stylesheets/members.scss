@@ -35,13 +35,26 @@
   margin-bottom:20px;
   }
 
-  /*listページ*/
-  .list{
-  heght: 150px;
-  width: 160px;
+  .recommend-item{
+  heght: 200px;
+  width: 120px;
   margin: 20px;
   float: left;
   }
+
+
+  /*listページ*/
+.list{
+  height: 250px;
+  width: 170px;
+  margin: 20px;
+  float: left;
+}
+
+/*rankページ*/
+.genre-name{
+  size:50px;
+}
 
   /*item-showページ*/
   .item-show{
@@ -82,7 +95,6 @@
 
   .order-new-payment-title{
   text-align:center;
-  background-color:#66CCFF;
   margin-top:20px;
   border-bottom:1px solid #ddd;
   }
@@ -92,7 +104,7 @@
   align-items: center;
   }
 
-  .raddio-button{
+  .radio-button{
   display: inline-flex;
   justify-content: space-between;
   }
@@ -101,7 +113,6 @@
   text-align:center;
   margin-top:20px;
   border-bottom:1px solid #ddd;
-  background-color:#66CCFF;
   }
 
   .order-address{

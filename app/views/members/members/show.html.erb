@@ -1,4 +1,5 @@
-<div class="container">
+<div id="wrapper">
+  <%=flash[:success]%>
 	<div class="row">
 		<div class="col-xs-1"></div>
 		<div class="col-xs-10">
@@ -10,27 +11,27 @@
 			<%= link_to "パスワードを変更する", members_edit_pass_path, class:"btn btn-primary" %>
         		<table class="table table-bordered" >
 					 <tr>
-					   <th class="info"><%= "氏名" %></th>
+					   <th><%= "氏名" %></th>
 					   <td><%= current_member.last_name %><%= current_member.first_name %></td>
 					 </tr>
 					 <tr>
-					   <th class="info"><%= "カナ" %></th>
+					   <th><%= "カナ" %></th>
 					   <td><%= current_member.last_name_kana %><%= current_member.first_name_kana %></td>
 					 </tr>
 					 <tr>
-					   <th class="info"><%= "郵便番号" %></th>
+					   <th><%= "郵便番号" %></th>
 					   <td><%= current_member.postal_code %></td>
 					 </tr>
 					 <tr>
-					  <th class="info"><%= "住所" %></th>
+					  <th><%= "住所" %></th>
 					  <td><%= current_member.address %></td>
 					 </tr>
 					 <tr>
-					  <th class="info"><%= "電話番号" %></th>
+					  <th><%= "電話番号" %></th>
 					  <td><%= current_member.telephone_number %></td>
 					 </tr>
 					 <tr>
-					  <th class="info"><%= "メールアドレス" %></th>
+					  <th><%= "メールアドレス" %></th>
 					  <td><%= current_member.email %></td>
 					 </tr>
 				 </table>
@@ -41,6 +42,6 @@
 					   <h4><strong>注文履歴　</strong></h4> <%= link_to "一覧を見る", orders_path, class:"btn btn-primary" %>
 					</div>
 		</div>
-		<div class="col-xs-4"></div>
+		<div class="col-xs-1"></div>
 	</div>
 </div>

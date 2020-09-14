@@ -4,7 +4,8 @@ class Members::HomeController < Members::Base
   before_action :set_items
 
   def top
-    @all_ranks = Item.find(OrderItem.group(:item_id).order('count(item_id) desc').limit(3).pluck(:item_id))
+      @item = Item.where(is_active: true)
+      @all_ranks = Item.find(OrderItem.group(:item_id).order('count(item_id) desc').limit(3).pluck(:item_id))
   end
 
   def about
