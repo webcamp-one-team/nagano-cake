@@ -3,4 +3,6 @@ module ApplicationHelper
 		price = price * 1.10
 		"#{price.floor}円"
 	end
+
+	
 end

@@ -6,39 +6,28 @@
 </div>
 <!-- ジャンル検索 -->
 	<aside id="sidebar">
-		<h3 class="heading">ジャンル検索</h3>
-	    <article>
-	    		<% @genres.each do |genre| %>
-				<ul>
-					<li><%= link_to genre.name, genre_path(genre.id) %></li>
-				</ul>
-				<% end %>
-      </article>
-      <article>
-				<h3 class="heading">人気ランキング</strong></th>
-				<% @all_ranks.each.with_index(1) do |item, i|%>
-        <ul>
-					<li>No.<%= i %></li>
-					<li><%= link_to item_path(item.id) do  %></li>
-							<%= attachment_image_tag item, :img, format: 'jpeg', fallback: "no_image.jpg", size: "30x30" %>
-					<li><%= item.name %><p></li>
-						<% end %>
-        <ul>
-				<% end %>
-	    </article>
+		<%= render 'members/items/rank', genres: @genres, all_ranks: @all_ranks %>
 	</aside>
 
 	<section id="main">
 		<section class="content">
 		<!--メインページ-->
-			<p>　ようこそ、NaganoCakeへ！</p>
-			<p>　このサイトは、ケーキ販売のECサイトになります。</p>
-			<p>　会員でない方も商品の閲覧はできますが、</p>
-			<p>　購入には会員登録が必要になります。</p>
-			<h3 class="heading">　オススメ商品</h3>
-				<% @all_rankings.each do |item| %>
-					<%= render 'members/items/list', item: item %>
-				<% end %>
+			<div class="top-message">
+				<p>　ようこそ、NaganoCakeへ！</p>
+				<p>　このサイトは、ケーキ販売のECサイトになります。</p>
+				<p>　会員でない方も商品の閲覧はできますが、</p>
+				<p>　購入には会員登録が必要になります。</p>
+			</div>
+			<h3 class="recommend-item-title">オススメ商品</h3>
+					<% @all_rankings.each do |item| %>
+						<% if item.is_active == false %>
+							<%= render 'members/items/sold_out', item: item %>
+						<% else %>
+							<%= link_to item_path(item.id) do  %>
+								<%= render 'members/items/list', item: item %>
+							<% end %>
+						<% end %>
+					<% end %>
 		</section>
 	</section>
 </div>

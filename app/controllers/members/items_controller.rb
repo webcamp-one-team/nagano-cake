@@ -3,6 +3,7 @@ class Members::ItemsController < Members::Base
   before_action :set_genres
 
   def index
+
   #キーワードが入力されていれば、whereメソッドとLIKE検索（部分一致検索）を組み合わせて、必要な情報のみ取得する。
     @genres = Genre.where(validity: true)
     @items = Item.where(genre_id: @genres.pluck(:id)).where(is_active: true)

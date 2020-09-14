@@ -1,0 +1,33 @@
+<h3 class="heading">ジャンル検索</h3>
+	    <article class="genre-name">
+	    		<% genres.each do |genre| %>
+				<ul>
+					<li><%= link_to genre.name, genre_path(genre.id) %></li>
+				</ul>
+				<% end %>
+      </article>
+      <h3 class="heading">人気ランキング</h3>
+        <article>
+        	<% all_ranks.each.with_index(1) do |item, i|%>
+        		<% if item.is_active == false %>
+        		<ul>
+        			<li>
+		          		No.<%= i %>
+		            		<%= link_to items_path do  %>
+		            		<%= attachment_image_tag item, :img, format: 'jpeg', fallback: "no_image.jpg", size: "30x30" %>
+		           			<%= item.name %>
+		           			<p>ご好評につき完売となっております。</p>
+       					<% end %>
+       				</li>
+       				<% else %>
+       				<li>
+       					No.<%= i %>
+       				 	<%= link_to item_path(item.id) do  %>
+		            		<%= attachment_image_tag item, :img, format: 'jpeg', fallback: "no_image.jpg", size: "30x30" %>
+		           			<%= item.name %>
+		           		<% end %>
+		           	</li>
+		        </ul>
+		        <% end %>
+        	<% end %>
+      	</article>
