@@ -1,45 +1,48 @@
-<%= form_for(@item, url: admins_item_path) do |f| %>
-<h4><strong>商品編集</strong></h4>
-<br>
-<br>
-<br>
-<div class="row">
-    <div class="col-sm-5">
-    	<div align="center">
-    		<%= attachment_image_tag @item, :img, class: "img-square", format: 'jpeg', fallback: "no_image.jpg", size: "200x200" %>
-			<%= f.attachment_field :img, placeholder: "商品画像", class: "image-prev" %>
-    	</div>
-	</div>
-	<div class="col-sm-7">
-		<table class="table table-noborder">
-			<thead>
-				<th class="col-4"></th>
-				<th class="col-8"></th>
-			</thead>
-			<tbody>
-				<tr>
-					<td class="col-4">商品名</td>
-					<td class="col-8"><%= f.text_field :name, class:"form-control", placeholder:"商品名" %></td>
-				</tr>
-				<tr>
-					<td class="col-4">商品説明</td>
-					<td class="col-8"><%= f.text_field :detail, class:"form-control", placeholder:"商品説明" %></td>
-				</tr>
-				<tr>
-					<td class="col-4">ジャンル</td>
-					<td class="col-8"><%= f.collection_select :genre_id, @genres, :id, :name %></td>
-				</tr>
-				<tr>
-					<td class="col-4">税抜価格</td>
-					<td class="col-8"><%= f.text_field :price, class:"form-control", placeholder:"税抜価格" %>円</td>
-				</tr>
-				<tr>
-					<td class="col-8">販売ステータス</td>
-					<td class="col-4"><%= f.select :is_active ,[['販売中',true],['売り切れ',false]] %></td>
-				</tr>
-			</tbody>
-		</table>
+<div id="wrapper">
+    <div class="row">
+	    <div class="col-xs-1"></div>
+	    <div class="col-xs-10">
+			<%= form_with model:@item, url: admins_item_path, local: true do |f| %>
+			<h3 class="heading">商品編集</h3>
+			<div class="container">
+				<div class="row">
+				    <div class="col-sm-3">
+				    	<div align="center">
+				    		<%= attachment_image_tag @item, :img, class: "img-square", format: 'jpeg', fallback: "no_image.jpg", size: "200x200" %>
+							<%= f.attachment_field :img, placeholder: "商品画像", class: "image-prev" %>
+				    	</div>
+					</div>
+					<div class="col-sm-6">
+						<table class="table table-bordered">
+							<tbody>
+								<tr>
+									<th>商品名</th>
+									<td><%= f.text_field :name, class:"form-control", placeholder:"商品名" %></td>
+								</tr>
+								<tr>
+									<th>商品説明</th>
+									<td><%= f.text_field :detail, class:"form-control", placeholder:"商品説明" %></td>
+								</tr>
+								<tr>
+									<th>ジャンル</th>
+									<td><%= f.collection_select :genre_id, @genres, :id, :name %></td>
+								</tr>
+								<tr>
+									<th>税抜価格</th>
+									<td><%= f.text_field :price, class:"form-control", placeholder:"税抜価格" %>円</td>
+								</tr>
+								<tr>
+									<th>販売ステータス</th>
+									<td><%= f.select :is_active ,[['販売中',true],['売り切れ',false]] %></td>
+								</tr>
+							</tbody>
+						</table>
+						<div align="right"><%= f.submit '変更を保存' %></div>
+					</div>
+				</div>
+				<div class="col-sm-3"></div>
+				<% end %>
+			</div>
+		<div class="col-xs-1"></div>
 	</div>
 </div>
-<div align="right"><button type="button" class="btn btn-secondary"><%= f.submit '変更を保存' %></button></div>
-<% end %>
