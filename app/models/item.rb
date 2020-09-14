@@ -7,6 +7,11 @@ class Item < ApplicationRecord
 	has_many :members, through: :carts
 	has_many :order_items
 	has_many :order, through: :order_items
+	has_many :likes, dependent: :destroy
+
+	def liked_by?(member)
+		likes.where(member_id: member.id).exists?
+	end
 
 	attachment :img
 end

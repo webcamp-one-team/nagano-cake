@@ -33,22 +33,13 @@ class DeviseCreateMembers < ActiveRecord::Migration[5.2]
       # t.datetime :locked_at
 
       t.string :last_name
-      t.string :string
       t.string :first_name
-      t.string :string
       t.string :last_name_kana
-      t.string :string
       t.string :first_name_kana
-      t.string :string
       t.string :postal_code
-      t.string :string
       t.string :address
-      t.string :string
       t.string :telephone_number
-      t.string :string
-      t.string :is_deleted
-      t.string :boolean
-
+      t.boolean :is_deleted, :default => false, :null => false
       t.timestamps null: false
     end
 

@@ -11,7 +11,8 @@ class Member < ApplicationRecord
   has_many :carts
   has_many :orders
   has_many :cart_items
-  has_many :items, through: :cart_items
+  has_many :likes, dependent: :destroy
+
   #validates :last_name, format: { with: /\A[^\p{katakana}\u{30fc}]+\z/ }
   #validates :first_name, format: { with: /\A[^\p{katakana}\u{30fc}]+\z/ }
   #validates :last_name_kana, format: { with: /\A[\p{katakana}\u{30fc}]+\z/ }
